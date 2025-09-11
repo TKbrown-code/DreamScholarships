@@ -1,0 +1,415 @@
+.dashboard_body{
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 6% 85% 10%;
+  grid-template-areas: "aside nav" "aside main" "aside footer";
+  position: relative;
+}
+.Dashboard-nav {
+  grid-area: nav;
+  color: aliceblue;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  justify-content: space-between;
+  box-shadow: #03022c1f 2px 2px 4px;
+  border-bottom: #03022c solid 1px;
+}
+.user-section{
+    display: flex;
+    width: 28%;
+    gap: 10px;
+    align-items: center;
+}
+.user-sec-profile{
+    display: flex;
+    gap: 10px;
+    align-items:  end;
+    font-size: 0.8rem;
+    font-family: 'Times New Roman', Times, serif;
+    color: #03022cfa;
+    text-align: right;
+}
+.user-details{
+    display: flex;
+    flex-direction: column;
+}
+.user-sec-btn {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  width: 52%;
+  padding: 10px;
+}
+
+.user-sec-btn button {
+  color: #03022ce2;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items:flex-end;
+}
+.user-sec-btn button span{
+    font-size: 0.8rem;
+}
+
+.aside {
+  grid-area: aside;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.096);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0px;
+  height: 100vh;
+  background: rgb(254, 255, 255); 
+}
+
+.aside .button{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: #03022c3e solid 1px;
+}
+
+.aside .button button{
+    text-align: left;
+    background: rgb(255, 255, 255);
+    border: none;
+    padding: 10px;
+    font-size: 1em;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgba(2, 6, 83, 0.978);
+    cursor: pointer;
+}
+.aside .button button:hover{
+    background: rgb(2, 2, 43);
+    color: aliceblue;
+}
+.aside .button{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.aside .button button{
+    width: 100%;
+}
+.preferences{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+.aside .preferences{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 5px;
+}
+.aside .preferences button,
+.aside .preferences Link{
+   width: 100%;
+   text-align: center;
+   border: none;
+   padding: 10px;
+   font-size: 1rem;
+   background-color: rgb(255, 255, 255);
+   color: rgb(2, 2, 43);
+   cursor: pointer;
+   text-align: left;
+}
+.aside .preferences button:hover,
+.aside .preferences Link{
+    background: rgb(2, 2, 43);
+    color: aliceblue;
+}
+.main{
+    width: 100%;
+    grid-area: main;
+}
+.dashboard_body .footer{
+    grid-area: footer;
+}
+.dashboard_body .footer .footer-content{
+    margin: auto;
+    text-align: center;
+    color: rgba(2, 2, 43, 0.687);
+    background-color: white;
+    box-shadow: 4px 4px 16px hsla(0, 0%, 0%, 0.224);
+}
+.dashboard_body .footer .footer-content .links  a,
+.footer-links a{
+    color: #047e45b2;
+    text-decoration: none;
+}
+
+.dashboard-mobile .aside-btn{
+    display: none;
+    background: none;
+    border: solid aliceblue 0.5px;
+    color: aliceblue;
+    place-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 30px;
+    height: 25px;
+}
+
+.dashboard-mobile{
+    display: flex;
+    flex-direction: column;
+    display: none;
+}
+.dashboard-mobile .button{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dashboard-mobile .button button{
+  padding: 10px;
+  text-align: left;
+  font-size: 1.05rem;
+  color: rgb(242, 241, 245);
+  background: none;
+  border: none;
+}
+.dashboard-mobile .preferences{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+.dashboard-mobile .preferences button,
+.dashboard-mobile .preferences Link{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    text-align: left;
+    color: #B2D732;
+    background: none;
+    font-size: 1.05rem;
+}
+.aside-head{
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ margin-bottom:20px;
+ background-color: #03022c;
+ text-align: center;
+ font-size: 0.5rem;
+ justify-content: center;
+ padding: 15px;
+ height: 100px;
+ border-bottom: solid rgb(44, 0, 100) 2px;
+}
+
+.aside-mobile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #020122;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 2000;
+}
+
+.aside-mobile.slide-in {
+  transform: translateX(0);
+}
+
+.aside-mobile.slide-out {
+  transform: translateX(-100%);
+}
+
+.aside-mobile .aside-head img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.aside .logo{
+    width: 200px;
+    padding: 10px;
+    font-size: 1.28rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 120px;
+    align-items: center;
+    justify-content: center;
+    border-bottom: rgba(159, 159, 159, 0.531) solid 1px;
+    background-color: #03022c;
+    margin-bottom: 20px;
+} 
+.aside .logo .icon{
+    width: 25%;
+    height: 40%;
+    text-align: center;
+    background-color: #02242c;
+}
+.aside .logo span{
+    color: lightgreen;
+}
+
+.clock{
+    color: #02242c;
+}
+
+@media(max-width:1280px){
+   .user-section{
+        width: 35%;
+    }
+    .Dashboard-nav{
+        align-items: center;
+    }
+}
+
+@media(max-width:900px) and (min-width:500px){
+    .dashboard_body{
+        grid-template-columns: 1fr;
+        grid-template-rows: 6% 85% 10%;
+        grid-template-areas: "nav nav" " main main" "footer footer";
+    }
+    .aside{
+        display: none;
+    }
+    .user-section{
+        display: none;
+    }
+    .aside-btn{
+        display: block;
+    }
+    .aside-mobile{
+        display: flex;
+        top: 0;
+        z-index: 0;
+    }
+    .dashboard-mobile{
+        display: block;
+    }
+    .dashboard-mobile .preferences button,
+    .dashboard-mobile .preferences Link{
+        font-size: 1.5rem;
+        padding: 12px;
+    }
+    .dashboard-mobile .button button{
+        font-size: 1.5rem;
+        padding: 12px;
+    }
+    .dashboard-mobile .aside-btn{
+        font-size: 1.3em;
+        padding: 15px;
+        width: 50px;
+        height: 40px;
+    }
+    .aside-mobile span{
+        font-size: 2em;
+    }
+    .aside-mobile .aside-head img{
+        width: 60px;
+        height: 60px;
+    }
+    .aside-mobile .aside-head{
+        height: 180px;
+    } 
+    .Dashboard-nav{
+        align-items: center;
+    }
+}
+
+@media(max-width:1024px) and (min-width: 900px){
+    .user-section{
+        width: 50%;
+    }
+    .aside{
+        top: 0px;
+        height: 100vh;
+        overflow-y: auto;
+    }
+    .Dashboard-nav{
+        align-items: center;
+    }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .dashboard_body{
+        grid-template-columns: 1fr;
+        grid-template-rows: 6% 85% 10%;
+        grid-template-areas: "nav nav" " main main" "footer footer";
+    }
+    .aside{
+        display: none;
+    }
+    .user-section{
+        display: none;
+    }
+    .aside-btn{
+        display: block;
+    }
+    .aside-mobile{
+        display: flex;
+        overflow-y: auto;
+        width: 50%;
+        top: 0;
+        height: 100vh;
+    }
+    .dashboard-mobile{
+        display: block;
+    }
+    .aside-mobile span{
+        font-size: 1.5em;
+    }
+    .Dashboard-nav{
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width:360px){
+    .dashboard_body{
+        grid-template-columns: 1fr;
+        grid-template-rows: 6% 85% 10%;
+        grid-template-areas: "nav nav" " main main" "footer footer";
+    }
+    .aside{
+        display: none;
+    }
+    .user-section{
+        display: none;
+    }
+    .aside-btn{
+        display: block;
+    }
+    .aside-mobile{
+        display: flex;
+        overflow-y: auto;
+        width: 50%;
+        top: 0;
+    }
+    .dashboard-mobile{
+        display: block;
+        top: 0;
+    }
+    .aside-mobile span{
+        font-size: 1.5em;
+    }
+    .aside-mobile{
+        top: 34px;
+        height: calc(100vh - 34.03px);
+    }
+    .Dashboard-nav{
+        align-items: center;
+    }
+}
+

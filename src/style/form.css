@@ -1,0 +1,415 @@
+
+.form-holder{
+  height: 100vh;
+  place-content: center;
+  margin: 0;
+  position: relative;
+   background: linear-gradient(-45deg, rgb(113, 238, 113) 50%, white 50%); 
+}
+
+/* === Form Container === */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  width: 40%;
+  height: auto;
+  box-shadow: 0px 4px 8px hwb(0 0% 100% / 0.377);
+  margin: auto;
+  border-radius: 20px;
+  gap: 10px;
+}
+
+.form-container .formheader {
+  text-align: center;
+  color: rgb(4, 6, 44);
+  padding: 10px;
+  margin-bottom: 20px;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.534);
+}
+
+.form-container .formheader h1 {
+  margin: 0;
+  color: rgb(14, 221, 135);
+  font-size: 2.5rem;
+}
+
+.form-container .formheader span {
+  font-size: 1.5rem;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+  gap: 20px;
+}
+
+.form-container form div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-container form label {
+  border: 1px solid rgba(6, 6, 48, 0.13);
+  background-color: rgba(7, 218, 98, 0.005);
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.form-container form label input {
+  width: 95%;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 0.8rem;
+}
+
+.form-container form .policy {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.form-container .signbtn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 80%;
+  margin: 10px auto;
+}
+
+.form-container .signbtn button{
+  padding: 10px;
+  color: aliceblue;
+  background-color: rgb(3, 3, 40);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-container .signbtn button:hover{
+  background-color: rgba(3, 3, 40, 0.889);
+}
+.form-container .signbtn button:active{
+  transform: scale(0.9);
+}
+
+.form-container .actual-policies {
+  width: 90%;
+  margin: 10px auto;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.596);
+}
+.form-container .link{
+  color: rgb(174, 177, 4);
+}
+/* === Modal Section === */
+.Modal-container{
+  position: absolute;
+  width: 100%;
+  height: inherit;
+  background-color: rgba(0, 0, 0, 0.275);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-modal-container {
+  width: 100%;
+  height: auto;
+}
+
+.signup-modal-container .modal {
+  width: 50%;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: aliceblue;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.441);
+}
+
+.signup-modal-container .modal h2 {
+  padding: 10px;
+  text-align: center;
+  font-size: 2.5rem;
+  color: rgb(7, 218, 98);
+}
+
+.signup-modal-container p {
+  padding: 10px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgb(2, 2, 34);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.modal-buttons button {
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.242);
+}
+
+.second-form{
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  place-content: center;
+  display: flex;
+  align-items: center;
+  background:rgba(155, 209, 155, 0.247);
+}
+
+.second-form-container{
+  background-color: #fff;
+  box-shadow: 2px 4px 8px hsla(0, 0%, 0%, 0.158);
+  width: 40%;
+  height: 35%;
+  border: rgba(51, 50, 50, 0.308) solid 1px;
+  border-radius: 20px;
+}
+
+.second-form-header{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: rgb(111, 223, 0);
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.233);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.second-form-container form{
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.form-button{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.second-form-container  button{
+  width: 20%;
+  margin: auto;
+  padding: 10px;
+  border: none;
+  background-color: rgb(1, 1, 48);
+  border-radius: 10px;
+  color: aliceblue;
+}
+.resetpws{
+  color: green;
+  cursor: pointer;
+}
+.resetpws:hover{
+  color: rgb(6, 189, 82);
+}
+/* ===== Small Devices (up to 600px) ===== */
+@media screen and (max-width: 600px) {
+  .form-container {
+    width: 95%;
+    margin: auto;
+    box-shadow: none;
+  }
+
+  .second-form .second-form-container{
+    width: 90%;
+  }
+
+  .form-container form {
+    width: 100%;
+  }
+
+  .form-container .formheader {
+    font-size: 2rem;
+  }
+
+  .form-container .formheader span {
+    font-size: 1.2rem;
+  }
+
+  .form-container form label input {
+    font-size: 1rem;
+  }
+
+  .form-container .signbtn {
+    width: 100%;
+  }
+
+  .mobile-nav {
+    display: none;
+  }
+  .signup-modal-container .modal{
+    width: 90%;
+  }
+  .formsection .form-container{
+    width: 90%;
+  }
+  .formsection{
+    width: 100%;
+  }
+}
+
+/* ===== Tablets (768px to 1024px) ===== */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .form-container {
+    width: 70%;
+    padding: 20px;
+  }
+
+  .formsection {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+
+  .form-container .formheader {
+    font-size: 2.2rem;
+    padding: 8px;
+  }
+
+  .form-container .formheader span {
+    font-size: 1.3rem;
+  }
+
+  .form-container form label {
+    align-items: center;
+  }
+
+  .form-container form label input {
+    font-size: 0.8rem;
+  }
+
+  .form-container .actual-policies {
+    font-size: 1rem;
+    margin: 8px;
+  }
+
+  .form-container .signbtn {
+    width: 90%;
+  }
+
+  .form-container form {
+    width: 100%;
+  }
+}
+
+/* ===== Large Screens (1280px and above) ===== */
+@media screen and (min-width: 1280px) {
+  .form-container {
+    width: 50%;
+    max-width: 600px;
+  }
+
+  .form-container .formheader {
+    font-size: 2.8rem;
+  }
+
+  .form-container .formheader span {
+    font-size: 1.4rem;
+  }
+
+  .form-container .signbtn {
+    width: 70%;
+  }
+
+  .formsection {
+    height: 120vh;
+  }
+}
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: #555;
+}
+
+.reset-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  padding: 20px;
+}
+
+.reset-box {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.reset-box h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.reset-box form {
+  display: flex;
+  flex-direction: column;
+}
+
+.reset-box input {
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.reset-box button {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2563eb;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.reset-box button:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+}
+
+.show-hide-btn {
+  background: transparent;
+  color: #2563eb;
+  font-size: 14px;
+  margin-bottom: 15px;
+  text-align: right;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}

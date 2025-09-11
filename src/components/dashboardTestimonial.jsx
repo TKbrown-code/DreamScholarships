@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { supabase } from "../lib/supabase";
+import { supabase } from "../lib/Supabase";
 import { useAuth } from "../context/AuthContext";
 import { useProfileAvatar } from "../hooks/avaterpic";
 import { motion, AnimatePresence } from "framer-motion";

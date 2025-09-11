@@ -1,5 +1,5 @@
 import React, { useEffect, useId, useRef, useState } from "react";
-import { supabase } from "../lib/supabase";
+import { supabase } from "../lib/Supabase";
 import { useAuth } from "../context/AuthContext";
 import "../style/AvatarPicker.css"; // import CSS file
 

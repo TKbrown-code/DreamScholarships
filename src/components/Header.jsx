@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage, faPaperPlane, faUserAlt, faSignOutAlt, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '../context/AuthContext';
 import ErrorBoundary from '../context/ErrorBoundary';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../lib/Supabase';
 import { useProfileAvatar } from "../hooks/avaterpic";
 import AOS from 'aos';
 import 'aos/dist/aos.css';

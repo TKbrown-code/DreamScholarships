@@ -5,7 +5,7 @@ import { useModal } from "../hooks/useModal";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import "../style/form.css"
-import { supabase } from "../lib/supabase";
+import { supabase } from "../lib/Supabase";
 import { useAuth } from "../context/AuthContext";
 
 export default function SecondForm() {

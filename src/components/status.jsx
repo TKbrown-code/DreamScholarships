@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useProfile } from "../hooks/useProfile";
-import { supabase } from "../lib/supabase";
+import { supabase } from "../lib/Supabase";
 import { useAuth } from "../context/AuthContext";
 
 export default function Status() {

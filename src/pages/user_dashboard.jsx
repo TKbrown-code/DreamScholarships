@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../lib/Supabase';
 import { useAuth } from '../context/AuthContext';
 import DashboardForms from "../components/userDashboardforms";
 import Avater from "../hooks/profilepic"
@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserAlt,  faArrowCircleLeft, faUserGraduate, faGear, faComment, faBellConcierge, faQuoteLeft, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import Nav from "../components/dashboard-nav";
-import UserProfile from "../components/Userprofile";
 import Profils from "../components/profile";
 import Chats from "../components/chats";
 import Notifications from "../components/Notifications";

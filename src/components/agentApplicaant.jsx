@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { supabase } from "../lib/supabase";
+import { supabase } from "../lib/Supabase";
 import emailjs from "emailjs-com";
 import { Navigate } from "react-router-dom";
 

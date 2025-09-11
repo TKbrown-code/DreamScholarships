@@ -11,7 +11,7 @@ import { useAuth } from "../context/AuthContext";
 import { useFormValidation } from "../hooks/useFormValidation";
 import { useModal } from "../hooks/useModal";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "../lib/supabase"; 
+import { supabase } from "../lib/Supabase"; 
 
 export default function Form() {
   const [isSignUp, setIsSignUp] = useState(true);

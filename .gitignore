@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+supabase/functions
 `node_modules
 .env
 dist/
@@ -6,11 +6,11 @@ dist/
 ghfghf
 passwordDB
 node_modules
-=======
+
 node_modules
 .env
 dist/
 *.log
 ghfghf
 passwordDB
->>>>>>> c523b2b (auth fix)
+ 

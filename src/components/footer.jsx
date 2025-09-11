@@ -1,7 +1,7 @@
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
-import { supabase } from "../lib/supabase"; // Supabase client
+import { supabase } from "../lib/Supabase"; // Supabase client
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";

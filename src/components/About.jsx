@@ -9,8 +9,6 @@ import image1 from '../assets/studentpic2.jpg';
 import image3 from '../assets/studentpic3.jpg';
 import image4 from '../assets/bbc.jpg';
 import image5 from '../assets/china-photo.jpg';
-import video from '../assets/0808.mp4'; 
-import video1 from '../assets/0808(1).mp4'; 
 import '@fontsource/inter';       
 import '@fontsource/inter/700.css'; 
 import { Link } from "react-router"
@@ -22,6 +20,8 @@ function Presentation() {
     const [videoSource, setVideoSource] = useState("video");
     const [play, setPlay] = useState(true); 
     const [volume, setVolume] = useState(0);
+    const video = "/videos/0808.mp4";
+    const video1 = "/videos/0808fr.mp4";
 
     const handleOpen = () => {
         setVideoSource(videoSource === "video" ? "video1" : "video");
@@ -60,7 +60,7 @@ function Presentation() {
                         muted={volume === 0}
                         playsInline
                     >
-                        <source  src={videoSource === "video" ? video : video1} typeof='mp4'/>
+                        <source  src={videoSource === "video" ? video : video1} type="video/mp4"/>
                         Your browser does not support the video tag.
                     </video>
                 </div>

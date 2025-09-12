@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-:root{
+:root {
   --main-color: rgb(76, 245, 175);
   --text-color: white;
   --other-color: rgb(20, 22, 44);
@@ -8,15 +8,14 @@
 }
 
 /* Reset */
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
 /* NAV */
-.nav{
+.nav {
   width: 100%;
   background-color: var(--other-color);
   top: 0;
@@ -24,32 +23,38 @@
   position: sticky;
   z-index: 2000;
 }
-.nav .navbar{
+
+.nav .navbar {
   width: clamp(85%, 90%, 100%);
   display: flex;
   justify-content: space-between;
   margin: auto;
   align-items: center;
 }
-.navbar ul{
+
+.navbar ul {
   display: flex;
   gap: 1.875rem;
 }
-.navbar ul li{
+
+.navbar ul li {
   list-style: none;
   padding: 0.625rem;
 }
-.navbar ul li a{
+
+.navbar ul li a {
   text-decoration: none;
   color: var(--text-color);
   position: relative;
   font-size: 1.2em;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.navbar ul li a:hover{
+
+.navbar ul li a:hover {
   color: var(--main-color);
 }
-.navbar ul li a::before{
+
+.navbar ul li a::before {
   content: "";
   width: 0;
   left: 0;
@@ -59,11 +64,12 @@
   background-color: var(--main-color);
   transition: width 0.3s ease;
 }
-.navbar ul li a:hover::before{
+
+.navbar ul li a:hover::before {
   width: 100%;
 }
 
-.logo{
+.logo {
   color: var(--main-color);
   font-size: 1.5em;
   display: flex;
@@ -72,7 +78,8 @@
   cursor: pointer;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.logo .icon{
+
+.logo .icon {
   width: 20px;
   height: 25px;
   background-color: var(--text-color);
@@ -80,7 +87,7 @@
   box-shadow: 3px 2px 0px var(--main-color);
 }
 
-.apply a{
+.apply a {
   padding: 5px;
   background-color: var(--text-color);
   width: 30%;
@@ -88,14 +95,14 @@
   color: var(--other-color);
   transition: background 0.3s ease;
 }
-.apply a:hover{
+
+.apply a:hover {
   background-color: var(--main-color);
   transform: scale(1.1);
 }
 
-
 /* Header */
-header{
+header {
   height: 85vh;
   width: 100%;
   background: url('../assets/bbc.jpg');
@@ -105,7 +112,7 @@ header{
   overflow: hidden;
 }
 
-header .content{
+header .content {
   display: flex;
   width: 90%;
   margin: auto;
@@ -113,16 +120,18 @@ header .content{
   height: inherit;
   align-items: center;
 }
-.overlay{
+
+.overlay {
   width: 100%;
   height: inherit;
   background-color: rgba(10, 10, 10, 0.281);
 }
 
-.header-content{
+.header-content {
   width: 50%;
 }
-.header-content h1{
+
+.header-content h1 {
   color: var(--main-color);
   font-size: 2.7em;
   margin-bottom: 10px;
@@ -130,7 +139,8 @@ header .content{
   font-weight: 800;
   text-shadow: #021c38b4 2px 2px 2px;
 }
-.header-content p{
+
+.header-content p {
   font-size: 1.25em;
   color: var(--text-color);
   margin-bottom: 10px;
@@ -138,17 +148,20 @@ header .content{
   font-weight: 800;
   text-shadow: #021c38b4 2px 2px 2px;
 }
-.header-content strong{
+
+.header-content strong {
   color: var(--other-color2);
   font-size: 1.3em;
 }
-.header-buttons{
+
+.header-buttons {
   display: flex;
   gap: 10px;
   margin-top: 10px;
 }
+
 .applybtn,
-.header-buttons a{
+.header-buttons a {
   padding: 10px;
   color: var(--text-color);
   font-size: 1.2em;
@@ -156,22 +169,24 @@ header .content{
   background: rgba(39, 41, 68, 0.932);
   cursor: pointer;
 }
-.header-buttons a{
+
+.header-buttons a {
   border: solid 4px rgba(255, 255, 255, 0.93);
   background: none;
   transition: background 0.3s ease;
 }
-.applybtn:hover{
+
+.applybtn:hover {
   background-color: rgba(2, 1, 8, 0.63);
 }
-.header-buttons a:hover{
+
+.header-buttons a:hover {
   background-color: white;
   color: var(--other-color);
 }
 
-/* Mobile navigation bar*/
-
-.scholarship-nav-mobile{
+/* Mobile navigation bar */
+.scholarship-nav-mobile {
   display: none;
   flex-direction: column;
   width: 90%;
@@ -179,7 +194,8 @@ header .content{
   border-bottom: var(--other-color) solid 1px;
   position: relative;
 }
-.scholarship-nav-mobile .scholarship-content{
+
+.scholarship-nav-mobile .scholarship-content {
   display: flex;
   flex-direction: column;
   width: 80%;
@@ -192,7 +208,8 @@ header .content{
   box-shadow: 4px 8px 16px hsla(0, 0%, 0%, 0.5);
   height: 270px;
 }
-.scholarship-nav-mobile .category{
+
+.scholarship-nav-mobile .category {
   width: 10%;
   padding: 5px;
   border: none;
@@ -205,22 +222,27 @@ header .content{
   display: flex;
   gap: 5px;
 }
+
 .scholarship-nav-mobile button,
-.scholarship-nav-mobile select{
+.scholarship-nav-mobile select {
   text-align: left;
-  text-wrap: nowrap;
+  white-space: nowrap;
 }
-.scholarship-nav-mobile .otherbtn{
+
+.scholarship-nav-mobile .otherbtn {
   display: flex;
   flex-direction: column;
   margin: 0;
 }
-.scholarship-content{
+
+/* Scholarship content */
+.scholarship-content {
   display: flex;
   gap: 20px;
 }
+
 .scholarship-nav button,
-.scholarship-nav select{
+.scholarship-nav select {
   border-radius: 10px;
   background: none;
   border: none;
@@ -234,7 +256,8 @@ header .content{
   border: solid 2px white;
   overflow-x: hidden;
 }
-.scholarship-content button{
+
+.scholarship-content button {
   padding: 5px;
   border: none;
   background: none;
@@ -245,7 +268,7 @@ header .content{
 }
 
 /* MOBILE NAV (hidden by default) */
-.mobile-nav{
+.mobile-nav {
   background-color: var(--other-color);
   display: none;
   top: 0;
@@ -254,11 +277,20 @@ header .content{
   width: 100%;
   z-index: 2000;
   margin: 0;
-
 }
 .more-content-mobile{
   position: absolute;
   background-color: #222;
+  z-index: 1;
+  padding: 10px;
+}
+
+.more-btn-mobile{
+  background:none;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgb(4, 3, 51);
 }
 
 .mobile-nav .navbar{
@@ -267,12 +299,13 @@ header .content{
   padding: 10px;
   align-items: center;
 }
+
 .mobile-nav .nav-content{
   display: flex;
   position: absolute;
   z-index: 1000;
   top: 58px;
-  left: 140px;
+  left: 220px;
   background-color: aliceblue;
   box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.247);
   flex-direction: column;
@@ -280,6 +313,7 @@ header .content{
   height: 50vh;
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
+  width: 55%;
 }
 .nav-content ul{
   display: flex;
@@ -815,11 +849,12 @@ section{
 }
 
 
-body { 
+html, body  { 
   background-color: rgb(255, 255, 255);
-  html, body {
   overflow-x: hidden;
 }
+html::-webkit-scrollbar {
+  display: none;
 }
 .view-scholarships .card-container{
     display: flex;
@@ -1076,21 +1111,6 @@ body {
   margin: 0;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .faq-container {
-    width: 95%;
-    padding: 25px 15px;
-  }
-
-  .faq-container h1 {
-    font-size: 1.8rem;
-  }
-
-  .faq-container .small {
-    font-size: 0.95rem;
-  }
-}
 
 .line{
     width: 100px;
@@ -1394,7 +1414,7 @@ footer .subcribe button:hover{
   max-height: 80vh;
   text-align: left;
   line-height: 1.5;
-  max-width: 60%;
+  max-width: 70%;
   -ms-overflow-style: none;  
   scrollbar-width: none;  
 }
@@ -1404,16 +1424,25 @@ footer .subcribe button:hover{
   background: transparent; 
 }
 
-.modal .close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
+.modal .scholarship-btn .close {
   font-size: 2rem;
-  background: none;
+  background: rgb(2, 2, 59);
   border: none;
   cursor: pointer;
+  color: white;
+  width: 30%;
+  margin-top: 10px;
+  font-size: 1rem;
+  padding: 10px;
 }
-
+.modal .scholarship-btn .close a{
+  text-decoration: none;
+  color: white;
+}
+.scholarship-btn{
+  display: flex;
+  justify-content: space-between;
+}
 .modal img {
   width: 100%;
   border-radius: 5px;
@@ -1443,31 +1472,6 @@ footer .subcribe button:hover{
    Largest to Smallest
    ============================== */
 
-/* --------- 1280px - 1025px --------- */
-@media screen and (max-width: 1025px) {
-    header {
-        width: 100%;
-        height: 150vh;
-    }
-
-    header .content {
-        flex-wrap: wrap;
-    }
-
-    header .content .header-content {
-        width: 100%;
-        padding-right: 0;
-    }
-
-    label {
-        display: flex;
-    }
-
-    .nav .navbar,
-    .mobile-nav .navbar {
-        width: 95%;
-    }
-}
 
 .user-dropdown {
   position: relative;
@@ -1533,21 +1537,49 @@ footer .subcribe button:hover{
   background: #1e40af; /* darker blue */
 }
 
-html::-webkit-scrollbar {
-  display: none;
-}
 
+
+/* --------- 1280px - 1025px --------- */
+@media screen and (max-width: 1025px) {
+  header {
+    width: 100%;
+    height: 150vh;
+  }
+
+  header .content {
+    flex-wrap: wrap;
+  }
+
+  header .content .header-content {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  label {
+    display: flex;
+  }
+
+  .nav .navbar,
+  .mobile-nav .navbar {
+    width: 95%;
+  }
+}
 
 /* --------- 1100px --------- */
 @media (max-width: 1100px) {
- .card-container .card {
+  .card-container .card {
     flex: 1 1 calc(33.333% - 20px);
     max-width: calc(33.333% - 20px);
     max-height: 550px;
   }
-.user{
+
+  .user {
     display: none;
-}
+    width: 50%;
+    margin: auto;
+    height: 100%;
+  }
+
   h1,
   .about-china-header h1 {
     font-size: 1.5rem;
@@ -1638,12 +1670,6 @@ html::-webkit-scrollbar {
     box-shadow: 0 0 5px rgba(26, 184, 137, 0.094);
   }
 
-  .user {
-    width: 50%;
-    margin: auto;
-    height: 100%;
-  }
-
   .register-form {
     width: 100%;
     align-items: center;
@@ -1663,10 +1689,11 @@ html::-webkit-scrollbar {
   .vision-container {
     flex-direction: column;
   }
+
   html, body {
-  overflow-x: hidden;
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
+    overflow-x: hidden;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
   }
 }
 
@@ -1681,9 +1708,11 @@ html::-webkit-scrollbar {
   .about-china-header h1 {
     font-size: 1.2rem;
   }
- .about-china{
-  width: 90%;
- }
+
+  .about-china {
+    width: 90%;
+  }
+
   .about-china-header p {
     font-size: 0.9rem;
   }
@@ -1750,24 +1779,32 @@ html::-webkit-scrollbar {
     place-content: center;
     display: flex;
   }
- .nav{
-  display: none;
- }
- .mobile-nav{
-  display: block;
- }
- html, body {
-  overflow-x: hidden;
-  -ms-overflow-style: none; 
-  scrollbar-width: none;
+
+  .nav {
+    display: none;
   }
-  .welcome-cards .card{
+
+  .mobile-nav {
+    display: block;
+  }
+
+  .welcome-cards .card {
     flex: 1 1 100%;
     max-width: 100%;
   }
+
+  .modal-overlay .modal {
+    max-width: 95%;
+  }
+
+  html, body {
+    overflow-x: hidden;
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+  }
 }
 
-/* --------- 00px --------- */
+/* --------- 800px --------- */
 @media (max-width: 800px) {
   .overlay .content {
     flex-wrap: wrap;
@@ -1828,28 +1865,51 @@ html::-webkit-scrollbar {
   .user {
     display: none;
   }
-  html, body {
-  overflow-x: hidden;
-  -ms-overflow-style: none; 
-  scrollbar-width: none;
-  }
-  .welcome-cards .card{
+
+  .welcome-cards .card {
     flex: 1 1 100%;
     max-width: 100%;
+  }
+
+  .modal-overlay .modal {
+    max-width: 95%;
+  }
+
+  html, body {
+    overflow-x: hidden;
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
   }
 }
 
-/* --------- 500px --------- */
-@media screen and (max-width: 500px){
-.card-container  .card {
+/* --------- 768px --------- */
+@media (max-width: 768px) {
+  .faq-container {
+    width: 95%;
+    padding: 25px 15px;
+  }
+
+  .faq-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .faq-container .small {
+    font-size: 0.95rem;
+  }
+}
+
+/* --------- 600px --------- */
+@media screen and (max-width: 600px) {
+  .card-container .card {
     flex: 1 1 100%;
     max-width: 100%;
   }
-  .welcome-cards{
-   flex-direction: column;
+
+  .welcome-cards {
+    flex-direction: column;
   }
-  
-  .welcome-section .welcome-cards .card{
+
+  .welcome-section .welcome-cards .card {
     flex: 1 1 100%;
     width: 100%;
   }
@@ -1857,19 +1917,21 @@ html::-webkit-scrollbar {
   header {
     height: 110vh;
   }
- 
+
   header .content {
     flex-direction: column-reverse;
   }
 
   body { 
-  background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
   }
+
   html, body {
-  overflow-x: hidden;
-  -ms-overflow-style: none; 
-  scrollbar-width: none;
+    overflow-x: hidden;
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
   }
+
   .scholarship-nav {
     display: none;
   }
@@ -1895,13 +1957,16 @@ html::-webkit-scrollbar {
   .user span {
     font-size: 2.5em;
   }
-  .avatar-form .avatar-page{
+
+  .avatar-form .avatar-page {
     width: 90%;
   }
-  .modal-overlay .modal{
-    width:90%;
+
+  .modal-overlay .modal {
+    max-width: 95%;
   }
 }
+
 .avatar-form .avatar-img {
   width: 100%;
   height: 100%;

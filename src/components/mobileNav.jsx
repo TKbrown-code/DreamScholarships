@@ -40,13 +40,14 @@ export default function Mobile_nav() {
               </div>
 
               <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><a href="#">Scholarships</a></li>
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Contact</a></li>
+                  <li><Link to="/">Home</Link></li>
+                  <li><a href="#Scholarships">Scholarships</a></li>
+                  <li><a href="#About-us">About us</a></li>
+                  <li><a href="#Testimonials">Testimonials</a></li>
+                  <li><a href="#FAQ">FAQ</a></li>
                 <li>
                       <div className="more">
-                          <button style={{padding:'5px'}} onClick={()  => setMore(!more)}>More <FontAwesomeIcon icon={faChevronCircleDown}/></button>
+                    <button className="more-btn-mobile" style={{padding:'5px'}} onClick={()  => setMore(!more)}>More <FontAwesomeIcon icon={faChevronCircleDown}/></button>
                         {more && (
                         <div className="more-content-mobile">
                             <Link style={{color:'white'}} to="/dictionary">Dictionary</Link>
@@ -57,7 +58,7 @@ export default function Mobile_nav() {
                   </li>
                   {user?.id ? (
                     <>
-                    <Link to="/dashboard" style={{ textDecoration: "none", color: "#333" }}>
+                    <Link to="/dashboard" style={{ textDecoration: "none", color: "#333", marginBottom:"5px" }}>
                       <FontAwesomeIcon icon={faUserAlt} /> Dashboard
                       </Link>
                     <button onClick={signOut} style={{padding:'5px', background:"lightgreen", color:'white'}}>

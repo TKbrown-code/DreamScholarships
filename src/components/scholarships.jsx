@@ -349,9 +349,6 @@ function Scholarships() {
       {modalOpen && modalData && (
         <div className="modal-overlay" onClick={() => setModalOpen(false)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <button className="close" onClick={() => setModalOpen(false)}>
-              &times;
-            </button>
             <div className="modal-image">
               <img src={modalData.photo_path} alt={modalData.type} />
             </div>
@@ -369,6 +366,14 @@ function Scholarships() {
                 ? new Date(modalData.deadline).toLocaleDateString()
                 : "N/A"}
             </p>
+            <div className="scholarship-btn">
+              <button className="close" onClick={() => setModalOpen(false)}>
+              Exit
+            </button>
+            <button className="close"> <a href="https://wa.me/673918431" target="_blank" rel="noopener noreferrer">
+                  Contact <FontAwesomeIcon icon={faMessage}/></a>
+              </button>
+            </div>
           </div>
         </div>
       )}

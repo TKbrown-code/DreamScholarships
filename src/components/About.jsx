@@ -55,12 +55,13 @@ function Presentation() {
                     <video
                         ref={videoRef}
                         loop
-                        src={videoSource === "video" ? video : video1}
+                        
                         style={{ width: "100%" }}
                         autoPlay
                         muted={volume === 0}
                         playsInline
                     >
+                        <source src={videoSource === "video" ? video : video1}/>
                         Your browser does not support the video tag.
                     </video>
                 </div>

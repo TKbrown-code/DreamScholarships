@@ -8,7 +8,7 @@ import image2 from '../assets/studentpic1.jpg';
 import image1 from '../assets/studentpic2.jpg';
 import image3 from '../assets/studentpic3.jpg';
 import image4 from '../assets/bbc.jpg';
-import image5 from '../assets/china-photo.jpg';
+import image5 from '../assets/china-photo.jpg'; 
 import '@fontsource/inter';       
 import '@fontsource/inter/700.css'; 
 import { Link } from "react-router"
@@ -20,12 +20,15 @@ function Presentation() {
     const [videoSource, setVideoSource] = useState("video");
     const [play, setPlay] = useState(true); 
     const [volume, setVolume] = useState(0);
+    
     const video = "/videos/0808.mp4";
     const video1 = "/videos/0808fr.mp4";
 
+   
     const handleOpen = () => {
-        setVideoSource(videoSource === "video" ? "video1" : "video");
+    setVideoSource(prev => prev === "video" ? "videoFr" : "video");
     };
+
     const handlePlayPause = () => setPlay(!play);
     const handleMute = () => setVolume(volume === 1 ? 0 : 1);
 
@@ -35,17 +38,22 @@ function Presentation() {
         AOS.init({ duration: 1000, once: true,  offset: 50 });
     }, []);
 
-    React.useEffect(() => {
-        if (!videoRef.current) return;
-        videoRef.current.muted = volume === 0;
-        videoRef.current.volume = volume;
-        if (play) {
-            const p = videoRef.current.play();
-            if (p && typeof p.catch === "function") p.catch(() => {});
-        } else {
-            videoRef.current.pause();
-        }
-    }, [play, volume, videoSource]);
+   React.useEffect(() => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = volume === 0;
+    videoRef.current.volume = volume;
+
+    // Force video to reload the new source
+    videoRef.current.load();
+
+    if (play) {
+        const p = videoRef.current.play();
+        if (p && typeof p.catch === "function") p.catch(() => {});
+    } else {
+        videoRef.current.pause();
+    }
+}, [play, volume, videoSource]);
+
 
     return (
         <>
@@ -54,13 +62,17 @@ function Presentation() {
                 <div className="video-container">
                     <video
                         ref={videoRef}
-                        loop
+                        loop                     
                         style={{ width: "100%" }}
                         autoPlay
                         muted={volume === 0}
                         playsInline
                     >
-                        <source  src={videoSource === "video" ? video : video1} type="video/mp4"/>
+                        <source 
+                            src={videoSource === "video" ? video : video1} 
+                            type="video/mp4" 
+                        />
+
                         Your browser does not support the video tag.
                     </video>
                 </div>

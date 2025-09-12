@@ -12,8 +12,10 @@ import SecondForm from "./components/secondForm";
 import Dictionary from "./components/dictionary";
 import Resource from "./components/StudentResource";
 import Applicant from "./components/agentApplicaant";
-import Reset from "./components/resetpassword"
-import Newpws from "./components/newpassword"
+import Reset from "./components/resetpassword";
+import Newpws from "./components/newpassword";
+
+
 function App() {
   return (
     <AuthProvider> 

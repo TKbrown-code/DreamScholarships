@@ -276,7 +276,6 @@ header .content {
   position: sticky;
   width: 100%;
   z-index: 2000;
-  margin: 0;
 }
 .more-content-mobile{
   position: absolute;
@@ -305,13 +304,12 @@ header .content {
   position: absolute;
   z-index: 1000;
   top: 58px;
-  left: 220px;
+  left: 0px;
   background-color: aliceblue;
   box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.247);
   flex-direction: column;
   padding: 10px;
-  height: 50vh;
-  transform: translateX(-100%);
+  height: 100vh;
   transition: transform 0.3s ease-in-out;
   width: 55%;
 }

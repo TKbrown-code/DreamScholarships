@@ -43,7 +43,7 @@ export default function Frequentlyaskquestions() {
     }, []);
 
     return (
-        <section>
+        <section style={{overflowX:'hidden'}}>
             <div className="faq-container" id='FAQ'>
                 <div className="h" data-aos="fade-down">
                     <h1>Frequently Asked Questions</h1>

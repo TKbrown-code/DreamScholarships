@@ -73,7 +73,7 @@ export default function Footer() {
   const closeModal = () => {setShowModal(false)};
 
   return (
-    <footer className="footer">
+    <footer className="footer" style={{overflowX:'hidden'}}>
       <div className="footer-sectionone">
         <div className="section1" data-aos="fade-right">
           <h2>Dream Scholarship</h2>

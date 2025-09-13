@@ -74,7 +74,7 @@ export default function UserMessages({ adminId }) {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "80vh", border: "1px solid #ccc" }}>
+    <div style={{ display: "flex", flexDirection: "column", height: "80vh", border: "1px solid #ccc", overflowX:'hidden' }}>
       {/* Messages */}
       <div style={{ flex: 1, overflowY: "auto", padding: "10px", backgroundColor: "#f9f9f9" }}>
         {messages.map((m) => {

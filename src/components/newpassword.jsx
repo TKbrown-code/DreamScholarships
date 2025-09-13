@@ -1,60 +1,58 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { supabase } from "../lib/Supabase";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-export default function PasswordResetPage() {
-  const [searchParams] = useSearchParams();
+export default function NewPassword() {
   const [newPassword, setNewPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const accessToken = searchParams.get("access_token"); // Supabase sends this
-  const type = searchParams.get("type"); // should be 'recovery'
-
   useEffect(() => {
-    if (type !== "recovery" || !accessToken) {
-      toast.error("Invalid or expired link");
-      navigate("/");
-    }
-  }, [type, accessToken]);
+    // Supabase will detect the reset token in URL and create a session automatically
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "PASSWORD_RECOVERY") {
+        console.log("Recovery session ready", session);
+      }
+    });
+  }, []);
 
-  const handleSubmit = async (e) => {
+  const handlePasswordUpdate = async (e) => {
     e.preventDefault();
-    if (!newPassword) return;
-
     setIsLoading(true);
-    try {
-      const { error } = await supabase.auth.updateUser(
-        { password: newPassword },
-        accessToken
-      );
-      if (error) throw error;
 
+    const { data, error } = await supabase.auth.updateUser({
+      password: newPassword,
+    });
+
+    if (error) {
+      toast.error(error.message);
+    } else {
       toast.success("Password updated successfully!");
-      setTimeout(() => navigate("/form"), 2000);
-    } catch (err) {
-      toast.error(err.message || "Failed to update password");
-    } finally {
-      setIsLoading(false);
+      navigate("/login");
     }
+
+    setIsLoading(false);
   };
 
   return (
     <div className="form-holder">
-      <h1>Set New Password</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="password"
-          placeholder="New password (min 6 chars)"
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-          required
-        />
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? "Updating..." : "Update Password"}
-        </button>
-      </form>
+      <div className="form-container">
+        <h1>Set New Password</h1>
+        <form onSubmit={handlePasswordUpdate}>
+          <input
+            type="password"
+            placeholder="Enter new password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            required
+          />
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Updating..." : "Update Password"}
+          </button>
+        </form>
+      </div>
       <ToastContainer position="top-right" autoClose={3000} theme="colored" />
     </div>
   );

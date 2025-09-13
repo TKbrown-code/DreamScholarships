@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMessage, faList } from "@fortawesome/free-solid-svg-icons";
+import { faMessage, faList, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { supabase } from "../lib/Supabase";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -192,7 +192,7 @@ function Scholarships() {
   );
 
   return (
-    <section id="Scholarships">
+    <section id="Scholarships" style={{overflowX:'hidden'}}>
       <div className="scholarship-header" data-aos="fade-down">
         <h1>Featured Scholarships</h1>
         <p>
@@ -361,7 +361,7 @@ function Scholarships() {
               <strong>Price:</strong> {formatCurrency(modalData.amount)}
             </p>
             <p>
-              <strong>Deadline:</strong>{" "}
+              <strong>Deadline:</strong>{" "}-
               {modalData.deadline
                 ? new Date(modalData.deadline).toLocaleDateString()
                 : "N/A"}
@@ -371,7 +371,7 @@ function Scholarships() {
               Exit
             </button>
             <button className="close"> <a href="https://wa.me/673918431" target="_blank" rel="noopener noreferrer">
-                  Contact <FontAwesomeIcon icon={faMessage}/></a>
+                  Apply  <FontAwesomeIcon icon={faPaperPlane}/></a>
               </button>
             </div>
           </div>

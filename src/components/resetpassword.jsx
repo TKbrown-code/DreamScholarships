@@ -1,169 +1,62 @@
 import React, { useState } from "react";
-import {
-  faEnvelope,
-  faLock,
-  faHome,
-  faEye,
-  faEyeSlash,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { supabase } from "../lib/Supabase"; // <-- adjust path
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
 export default function PasswordReset() {
-  const [step, setStep] = useState(1); // Step 1: email, Step 2: token + new password
   const [email, setEmail] = useState("");
-  const [token, setToken] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const EDGE_FUNCTION_URL =
-    "https://wqtzshzowmhurrpznbpo.supabase.co/functions/v1/passwordReset"; // Replace with your actual URL
-
-  const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
-
-  const handleEmailSubmit = async (e) => {
+  const handleResetRequest = async (e) => {
     e.preventDefault();
-    if (!isValidEmail(email)) {
-      toast.error("Please enter a valid email address");
-      return;
-    }
-
     setIsLoading(true);
-    try {
-      const res = await fetch(EDGE_FUNCTION_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
 
-      const data = await res.json();
-      if (!res.ok) {
-        toast.error(data.error || "Failed to generate token");
-        return;
-      }
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/new-password`, 
+      // link sent will include access token
+    });
 
-      toast.success("Token sent to your email!");
-      setStep(2);
-    } catch (err) {
-      console.error("Token request error:", err);
-      toast.error(err.message || "Something went wrong");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handlePasswordReset = async (e) => {
-    e.preventDefault();
-    if (!token || !newPassword) {
-      toast.error("Please fill in all fields");
-      return;
+    if (error) {
+      toast.error(error.message);
+    } else {
+      toast.success("Check your email for the password reset link!");
     }
 
-    setIsLoading(true);
-    try {
-      const res = await fetch(EDGE_FUNCTION_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, token, newPassword }),
-      });
-
-      const data = await res.json();
-      if (!res.ok) {
-        toast.error(data.error || "Failed to reset password");
-        return;
-      }
-
-      toast.success("Password reset successfully!");
-      navigate("/login");
-    } catch (err) {
-      console.error("Password reset error:", err);
-      toast.error(err.message || "Something went wrong");
-    } finally {
-      setIsLoading(false);
-    }
+    setIsLoading(false);
   };
 
   return (
-    <div className="form-holder">
+    <div className="formholder" style={{width:'100%', height:"100vh", background:"linear-gradient(-45deg, rgb(113, 238, 113), rgb(255, 255, 255))"}}>
+      <div style={{width:"100%", display:"flex", justifyContent:"center", transform:'translatey(250px)'}}>
       <div className="form-container">
-       
-
         <div className="formheader">
-          <h1>Password Reset</h1>
-          <span>
-            {step === 1 ? "Enter your email" : "Enter token & new password"}
-          </span>
+        <h1>Password Reset</h1>
         </div>
-
-        <form onSubmit={step === 1 ? handleEmailSubmit : handlePasswordReset}>
-          {step === 1 && (
-            <div>
-              <label>
-                <FontAwesomeIcon icon={faEnvelope} />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </label>
-            </div>
-          )}
-
-          {step === 2 && (
-            <>
-              <div>
-                <label>
-                  Token
-                  <input
-                    type="text"
-                    placeholder="Enter token"
-                    value={token}
-                    onChange={(e) => setToken(e.target.value)}
-                    required
-                  />
-                </label>
-              </div>
-              <div className="password-wrapper">
-                <label>
-                  <FontAwesomeIcon icon={faLock} />
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    placeholder="New Password"
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
-                    required
-                  />
-                  <FontAwesomeIcon
-                    icon={showPassword ? faEyeSlash : faEye}
-                    className="eye-icon"
-                    onClick={() => setShowPassword(!showPassword)}
-                  />
-                </label>
-              </div>
-            </>
-          )}
-
+        <form onSubmit={handleResetRequest}>
+          <input
+            type="email"
+            placeholder="Your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
           <div className="signbtn">
-            <button type="submit" disabled={isLoading}>
-              {isLoading
-                ? "Processing..."
-                : step === 1
-                ? "Send Token"
-                : "Reset Password"}
-            </button>
-             <button className="home-btn" onClick={() => navigate("/")}>
-          <FontAwesomeIcon icon={faHome} /> Home
-        </button>
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Sending..." : "Send Reset Link"}
+          </button>
           </div>
         </form>
+        <div className="signbtn">
+           <button onClick={() => navigate("/form")} style={{color:'white', background:'darkblue'}}>
+            <FontAwesomeIcon icon={faArrowCircleLeft}/> Back
+          </button>
+        </div>
       </div>
-
+      </div>
       <ToastContainer position="top-right" autoClose={3000} theme="colored" />
     </div>
   );

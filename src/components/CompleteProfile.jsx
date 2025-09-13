@@ -50,7 +50,7 @@ export default function CompleteProfile() {
   };
 
   return (
-    <section className="formsection">
+    <section className="formsection" style={{overflowX:'hidden'}}>
       <div className="form-container" style={{ width: "100%" }}>
         <div className="formheader">
           <h1>Complete Your Profile</h1>

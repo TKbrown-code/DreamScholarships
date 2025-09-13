@@ -41,7 +41,7 @@ function Slide() {
 
   return (
     <>
-    <section  style={{ backgroundColor: '#090727ff', padding: '20px' }} id='About-us'>
+    <section  style={{ backgroundColor: '#090727ff', padding: '20px', overflowX:'hidden' }} id='About-us'>
       <div className="slidecontainer">
         
         <div className="slide-overlay">

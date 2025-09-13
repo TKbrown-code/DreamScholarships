@@ -6,7 +6,9 @@
   --other-color: rgb(20, 22, 44);
   --other-color2: rgb(255, 203, 107);
 }
-
+html,body{
+  scroll-behavior: smooth;
+}
 /* Reset */
 * {
   margin: 0;
@@ -846,14 +848,6 @@ section{
     }
 }
 
-
-html, body  { 
-  background-color: rgb(255, 255, 255);
-  overflow-x: hidden;
-}
-html::-webkit-scrollbar {
-  display: none;
-}
 .view-scholarships .card-container{
     display: flex;
     width: 90%;
@@ -1108,7 +1102,6 @@ html::-webkit-scrollbar {
   line-height: 1.6;
   margin: 0;
 }
-
 
 .line{
     width: 100px;
@@ -1534,9 +1527,18 @@ footer .subcribe button:hover{
 .back-to-top:hover {
   background: #1e40af; /* darker blue */
 }
+.home{
+  overflow-x: hidden;
+   scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;
+}
 
-
-
+.home::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
 /* --------- 1280px - 1025px --------- */
 @media screen and (max-width: 1025px) {
   header {
@@ -1688,11 +1690,6 @@ footer .subcribe button:hover{
     flex-direction: column;
   }
 
-  html, body {
-    overflow-x: hidden;
-    -ms-overflow-style: none; 
-    scrollbar-width: none; 
-  }
 }
 
 /* --------- 900px --------- */
@@ -1795,11 +1792,6 @@ footer .subcribe button:hover{
     max-width: 95%;
   }
 
-  html, body {
-    overflow-x: hidden;
-    -ms-overflow-style: none; 
-    scrollbar-width: none;
-  }
 }
 
 /* --------- 800px --------- */
@@ -1873,11 +1865,6 @@ footer .subcribe button:hover{
     max-width: 95%;
   }
 
-  html, body {
-    overflow-x: hidden;
-    -ms-overflow-style: none; 
-    scrollbar-width: none;
-  }
 }
 
 /* --------- 768px --------- */
@@ -1924,11 +1911,6 @@ footer .subcribe button:hover{
     background-color: rgb(255, 255, 255);
   }
 
-  html, body {
-    overflow-x: hidden;
-    -ms-overflow-style: none; 
-    scrollbar-width: none;
-  }
 
   .scholarship-nav {
     display: none;

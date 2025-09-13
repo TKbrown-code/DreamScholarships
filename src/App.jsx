@@ -21,6 +21,7 @@ function App() {
     <AuthProvider> 
       <ErrorBoundary>
         <Routes>
+          
           <Route path="/" element={<Home />} />
           <Route path="/form" element={<Form />} />
           <Route path="/completeProfile" element={<SecondForm/>}/>
@@ -29,7 +30,7 @@ function App() {
           <Route path="/resource" element={<Resource/>}/>
           <Route path="/apply" element={<Applicant/>}/>
           <Route path="/reset" element={<Reset/>}/>
-          <Route path="/reset-password" element={<Newpws/>}/>
+          <Route path="/new-password" element={<Newpws/>}/>
           <Route
             path="/dashboard"
             element={

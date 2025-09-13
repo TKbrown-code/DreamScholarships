@@ -57,7 +57,7 @@ function Presentation() {
 
     return (
         <>
-        <section className="presentation" data-aos="fade-up">
+        <section className="presentation" data-aos="fade-up" style={{overflowX:'hidden'}}>
             <div className="video" data-aos="zoom-in">
                 <div className="video-container">
                     <video
@@ -99,7 +99,7 @@ function Presentation() {
                 </div>
             </div>
         </section>
-        <div className="presentation-footer-mobile" data-aos="fade-up">
+        <div className="presentation-footer-mobile" data-aos="fade-up" style={{overflowX:'hidden'}}>
                 <button onClick={handleOpen}>
                     {videoSource === "video" ? "Click here to watch video in French" : "Click here to watch video in English"}
                 </button>
@@ -134,7 +134,7 @@ function Vision() {
 
     return (
         <>
-        <section className="vision" data-aos="fade-right">
+        <section className="vision" data-aos="fade-right" style={{overflowX:'hidden'}}>
             <div className="vision-header" data-aos="fade-down">
                 <h1>Our Vision</h1>
                 <p>To be the leading agency in providing students with the best opportunities to study abroad and achieve their academic goals.</p>
@@ -152,7 +152,7 @@ function Vision() {
             </div>
         </section>
 
-        <section data-aos="fade-up">
+        <section data-aos="fade-up" style={{overflowX:'hidden'}}>
             <div className="flag">
                 <img src={image5} alt="" />
                 <div className="flag-overlay" data-aos="zoom-in" data-aos-delay="200">
@@ -176,7 +176,7 @@ function Mission() {
 
     return (
         <>
-        <section className="mission" data-aos="fade-left">
+        <section className="mission" data-aos="fade-left" style={{overflowX:'hidden'}}>
             <div className="mission-header" data-aos="fade-down">
                 <h1>Our Mission</h1>
                 <p>To provide students with the best opportunities to study abroad and achieve their academic goals.</p>
@@ -211,7 +211,7 @@ function Mission() {
         const { data: admins, error } = await supabase
           .from("admins")
           .select("*")
-          .order("created_at", { ascending: true });
+          .order("position", { ascending: true });
 
         if (error) {
           console.log("Failed getting team: " + error.message);
@@ -258,7 +258,7 @@ function Mission() {
   }, []);
 
   return (
-    <section className="team">
+    <section className="team" style={{overflowX:'hidden'}}>
       <div className="team-header" data-aos="fade-down">
         <h1>Meet Our Team</h1>
         <p>
@@ -268,7 +268,7 @@ function Mission() {
         <div className="line"></div>
       </div>
 
-      <div className="team-container">
+      <div className="team-container" style={{overflowX:'hidden'}}>
         {team.map((member) => (
           <div 
             key={member.id} 
@@ -313,7 +313,7 @@ function About() {
     return (
         <>
             <section>
-                <div className="about-header" data-aos="fade-down">
+                <div className="about-header" data-aos="fade-down" style={{overflowX:'hidden'}}>
                     <h1>About Us</h1>
                     <p>We are a team of dedicated professionals committed to helping students achieve their dreams through scholarships and educational opportunities.</p>
                     <div className="line"></div>

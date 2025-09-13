@@ -63,7 +63,7 @@ export default function Testimonial() {
   }, []);
 
 return (
-    <section className="testimonial-section" id="Testimonials">
+    <section className="testimonial-section" id="Testimonials" style={{overflowX:'hidden'}}>
       <h2>Testimonials</h2>
       <div className="line"></div>
 

@@ -28,7 +28,7 @@ export default function Section_one() {
 
   return (
    <>
-   <section id='welcome-section'>
+   <section id='welcome-section' style={{overflowX:'hidden'}}>
     <div className="welcome-section">
       <div className="welcome-cards">
         {cardElements}

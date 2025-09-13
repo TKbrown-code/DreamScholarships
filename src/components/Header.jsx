@@ -64,7 +64,7 @@ export default function Header() {
 
   return (
     <ErrorBoundary>
-      <header>
+      <header style={{overflowX:'hidden'}}>
         <div className="overlay">
           <div className="content">
             <div className="header-content" data-aos="fade-down">

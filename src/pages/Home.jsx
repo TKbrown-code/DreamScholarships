@@ -39,7 +39,7 @@ const Home = () => {
   };
 
     return (
-        <>  
+        <>  <div className="home">
             <Mobile />
             <Nav />
             <Header />
@@ -51,6 +51,7 @@ const Home = () => {
             <Testimonial />
             <Frequentlyaskquestions />
             <Footer />
+            </div>
              <a href="https://wa.me/+8615241647328" className="whatsapp">
             <FaWhatsapp/>
             </a>

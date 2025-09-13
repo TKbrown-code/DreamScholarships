@@ -67,54 +67,86 @@ export default function Form() {
     }
   }
 
-  const signUpUser = async () => {
-    try {
-      const { data, error } = await supabase.auth.signUp({
-        email: form.email,
-        password: form.password,
-      });
 
-      if (error) {
-        if (error.message?.toLowerCase().includes("already registered")) {
-          showModal("Profile Already Exists", "You already have an account. Please login.", [
-            { label: "Go to Login", onClick: signChange },
-            { label: "Close", onClick: closeModal },
-          ]);
-        } else {
-          toast.error("Signup failed: " + error.message);
-        }
-        return;
-      }
+  const checkExistingUser = async (email) => {
+  try {
+    // 1. Check profiles table
+    const { data: profile, error: profileError } = await supabase
+      .from("profiles")
+      .select("user_email")
+      .eq("user_email", email);
 
-      showModal("Signup Successful", "Check your email to verify before signing in.", [
-        { label: "Close", onClick: closeModal },
-        {
-          label: modalLoading ? "Signing in..." : "Complete Sign In",
-          onClick: async () => {
-            try {
-              setModalLoading(true);
-              await signInUser();
-              closeModal();
-            } finally {
-              setModalLoading(false);
-            }
-          },
-          style: { backgroundColor: "green", color: "white" },
-          disabled: modalLoading,
-        },
-      ]);
-    } catch (err) {
-      toast.error("Unexpected signup error: " + (err?.message || String(err)));
+    if (profileError) {
+      toast.error("Error checking profiles: " + profileError.message);
     }
-  };
 
-  const signInUser = async () => {
-    
+    // 2. Check Auth via Edge Function
+    const res = await fetch(
+      "https://wqtzshzowmhurrpznbpo.supabase.co/functions/check-auth-user",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      }
+    );
+    const authCheck = await res.json();
+
+    // Combine results
+    const exists = !!profile || authCheck.exists;
+
+    return exists;
+  } catch (err) {
+    toast.error("Unexpected error: " + (err?.message || String(err)));
+    return false;
+  }
+};
+
+  const signUpUser = async () => {
+  try {
+     const exists = await checkExistingUser(form.email);
+  if (exists) {
+    toast.error("User already exists. Please sign in.");
+    return;
+  }
+
+    // ✅ Continue with Supabase signup
+    const { data, error } = await supabase.auth.signUp({
+      email: form.email,
+      password: form.password,
+    });
+
+    if (error) {
+      toast.error("Signup failed: " + error.message);
+      return;
+    }
+
+    showModal("Signup Successful", "Check your email to verify before signing in.", [
+      { label: "Close", onClick: closeModal },
+      {
+        label: modalLoading ? "Signing in..." : "Complete Sign In",
+        onClick: async () => {
+          try {
+            setModalLoading(true);
+            await signInUser();
+            closeModal();
+          } finally {
+            setModalLoading(false);
+          }
+        },
+        style: { backgroundColor: "green", color: "white" },
+        disabled: modalLoading,
+      },
+    ]);
+  } catch (err) {
+    toast.error("Unexpected signup error: " + (err?.message || String(err)));
+  }
+};
+
+  const signInUser = async () => {   
     if(!isSignUp) 
     {
       
-    try {
-      
+    try {  
       const { data, error } = await supabase.auth.signInWithPassword({
         email: form.email,
         password: form.password,
@@ -137,7 +169,6 @@ export default function Form() {
   }
 
     if(isSignUp){
-        
         try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email: form.email,
@@ -149,25 +180,16 @@ export default function Form() {
         toast.error("Sign in failed: " + error.message);
         return;
       }
+      else
+       {  // Insert profile if needed 
+          await insertUserProfile(user);
+       }
 
-      const user = data?.user;
-      if (!user) {
-        toast.error("Sign in failed: Unknown error");
-        return;
-      }
-
-      if (!user.email_confirmed_at) {
-        toast.info("Please verify your email before signing in.");
-        return;
-      }
-      
-      // Insert profile if needed
+        // Redirect after everything is done
        showModal("Signed in successfully!", [
         { label: "Continue", onClick: navigate("/completeProfile")},
        ])
-      await insertUserProfile(user);
-      
-     // Redirect after everything is done
+    
       }catch (err) {
       toast.error("Unexpected sign-in error: " + (err?.message || String(err)));}
     }
@@ -230,7 +252,7 @@ export default function Form() {
                 {errors.second_name && <p className="error">{errors.second_name}</p>}
               </div>
               <div>
-                <PhoneInput country="cm" value={form.number} onChange={(phone) => setForm((prev) => ({ ...prev, number: phone }))} inputStyle={{ width: "100%" }} disabled={isLoading} />
+                <PhoneInput country="cm" value={form.number} onChange={(phone) => setForm((prev) => ({ ...prev, number: phone }))} inputStyle={{ width: "100%", border:"1px solid rgba(6, 6, 48, 0.13)" }} disabled={isLoading} />
                 {errors.number && <p className="error">{errors.number}</p>}
               </div>
             </>
@@ -268,7 +290,7 @@ export default function Form() {
                 {errors.password_verify && <p className="error">{errors.password_verify}</p>}
               </div>
               <div className="policy">
-                <input type="checkbox" name="policy" checked={form.policy} onChange={handleChange} disabled={isLoading} />
+                <input style={{width:"25px"}} type="checkbox" name="policy" checked={form.policy} onChange={handleChange} disabled={isLoading} />
                 <span>Accept our policies</span>
                 {errors.policy && <p className="error">{errors.policy}</p>}
               </div>

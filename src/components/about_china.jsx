@@ -11,7 +11,7 @@ export default function About_china() {
 
     return (
        <>
-        <section className='china'>
+        <section className='china' style={{overflowX:'hidden'}}>
             <div className="about-china-header" data-aos="fade-down">
                 <h1>About China</h1>
                 <p>Discover the Land of Opportunities</p>

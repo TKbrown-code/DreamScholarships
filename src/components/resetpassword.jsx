@@ -16,7 +16,7 @@ export default function PasswordReset() {
     setIsLoading(true);
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/new-password`, 
+      redirectTo: "http://localhost:3001/new-password", 
       // link sent will include access token
     });
 

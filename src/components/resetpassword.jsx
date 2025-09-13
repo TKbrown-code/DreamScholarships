@@ -16,7 +16,7 @@ export default function PasswordReset() {
     setIsLoading(true);
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: "http://localhost:3001/new-password", 
+      redirectTo: "https://dream-scholarships-o2h1.vercel.app/new-password", 
       // link sent will include access token
     });
 

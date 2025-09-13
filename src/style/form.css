@@ -80,6 +80,7 @@
   transition: all 0.2s ease-in-out;
   margin-bottom: 10px;
   min-width: 50%;
+  color: aliceblue;
 }
 
 .signbtn button:first-child {

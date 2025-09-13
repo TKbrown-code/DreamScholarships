@@ -12,22 +12,41 @@ export default function PasswordReset() {
   const navigate = useNavigate();
 
   const handleResetRequest = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
+  e.preventDefault();
+  setIsLoading(true);
 
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: "https://dream-scholarships-o2h1.vercel.app/new-password", 
-      // link sent will include access token
+  const { data: profile, error } = await supabase
+    .from("profiles")
+    .select("user_email")
+    .ilike("user_email", email);
+
+  if (error) {
+    console.log("fail to check: " + error.message);
+    toast.error("Error checking email");
+    setIsLoading(false);
+    return;
+  }
+
+  if (profile && profile.length > 0) {
+    console.log("user found: ", profile[0]);
+
+    const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: "https://dream-scholarships-o2h1.vercel.app/new-password",
     });
 
-    if (error) {
-      toast.error(error.message);
+    if (resetError) {
+      toast.error(resetError.message);
     } else {
       toast.success("Check your email for the password reset link!");
     }
+  } else {
+    toast.error("Email does not exist!");
+  }
 
-    setIsLoading(false);
-  };
+  setIsLoading(false);
+};
+
+
 
   return (
     <div className="formholder" style={{width:'100%', height:"100vh", background:"linear-gradient(-45deg, rgb(113, 238, 113), rgb(255, 255, 255))"}}>

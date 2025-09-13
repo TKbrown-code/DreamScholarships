@@ -68,33 +68,42 @@ export default function Form() {
   }
 
 
-  const checkExistingUser = async (email) => {
+const checkExistingUser = async (email) => {
   try {
-    // 1. Check profiles table
-    const { data: profile, error: profileError } = await supabase
-      .from("profiles")
-      .select("user_email")
-      .eq("user_email", email);
+    // 1️⃣ Check if the email exists in the admins table
+    const { data: adminData, error: adminError } = await supabase
+      .from("admins")
+      .select("admin_email")
+      .eq("admin_email", email)
+      .maybeSingle(); // optional: return single row or null
 
-    if (profileError) {
-      toast.error("Error checking profiles: " + profileError.message);
+    if (adminError) {
+      console.log("Admin check error:", adminError.message);
+      toast.error("Error checking admin accounts: " + adminError.message);
+      return false;
     }
 
-    // 2. Check Auth via Edge Function
-    const res = await fetch(
-      "https://wqtzshzowmhurrpznbpo.supabase.co/functions/check-auth-user",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      }
-    );
-    const authCheck = await res.json();
+    if (adminData) {
+      toast.error("Admins are not allowed to sign up!");
+      return true; // stop if email belongs to an admin
+    }
 
-    // Combine results
-    const exists = !!profile || authCheck.exists;
+    // 2️⃣ Check if the email exists in the profiles table
+    const { data: profileData, error: profileError } = await supabase
+      .from("profiles")
+      .select("user_email")
+      .eq("user_email", email)
+      .maybeSingle(); // return single row or null
 
+    if (profileError) {
+      toast.error("Error checking existing users: " + profileError.message);
+      return false;
+    }
+
+    // 3️⃣ Return true if email exists, false otherwise
+    const exists = !!profileData;
     return exists;
+
   } catch (err) {
     toast.error("Unexpected error: " + (err?.message || String(err)));
     return false;
@@ -145,7 +154,24 @@ export default function Form() {
   const signInUser = async () => {   
     if(!isSignUp) 
     {
-      
+
+    const { data: adminData, error: adminError } = await supabase
+      .from("admins")
+      .select("admin_email")
+      .eq("admin_email", form.email)
+      .maybeSingle(); // optional: return single row or null
+
+    if (adminError) {
+      console.log("Admin check error:", adminError.message);
+      toast.error("Error checking admin accounts: " + adminError.message);
+      return false;
+    }
+
+    if (adminData) {
+      toast.error("Admins cannot to sign into users profile!");
+       return // stop if email belongs to an admin
+    }
+    else{
     try {  
       const { data, error } = await supabase.auth.signInWithPassword({
         email: form.email,
@@ -167,6 +193,7 @@ export default function Form() {
       toast.error("Unexpected sign-in error: " + (err?.message || String(err)));
     }
   }
+}
 
     if(isSignUp){
         try {

@@ -1,6 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "../lib/Supabase";
 import emailjs from "emailjs-com";
+import Select from "react-select";
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
 export default function Applyform() {
   const [form, setForm] = useState({
@@ -17,6 +21,15 @@ export default function Applyform() {
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
+  const [scholarships, setScholarships] = useState({
+    bachelor: [],
+    master: [],
+    phd: [],
+    diploma: [],
+    chinese: [],
+  });
+  const [selectedProgram, setSelectedProgram] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,7 +66,7 @@ export default function Applyform() {
       newShake.country = true;
     }
 
-    if (!form.programs) {
+    if (!form.programs && !selectedProgram) {
       newErrors.programs = "Please select a program";
       newShake.programs = true;
     }
@@ -70,67 +83,111 @@ export default function Applyform() {
     return Object.keys(newErrors).length === 0;
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (!validate()) return;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validate()) return;
 
-  setLoading(true);
+    setLoading(true);
 
-  try {
-    // Insert into Supabase and return inserted row
-    const { data, error } = await supabase
-      .from("scholarship_applicant")
-      .insert([{ ...form }])
-      .select("id"); // returns the inserted id
+    try {
+      // Insert into Supabase and return inserted row
+      const { data, error } = await supabase
+        .from("scholarship_applicant")
+        .insert([
+          {
+            ...form,
+            programs: form.programs || selectedProgram,
+          },
+        ])
+        .select("id, created_at");
 
-    if (error) throw error;
+      if (error) throw error;
 
-    const id = data[0].id; // get the inserted record ID
+      const id = data[0].id;
 
-    // Send confirmation email via EmailJS
-    await emailjs.send(
-      import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      import.meta.env.VITE_EMAILJS_TEMPLATE_ID_ONE,
-      {
-        to_email: form.email,
-        applicant_name: form.full_name,
-        program: form.programs,
-        country: form.country,
-        education_level: form.education_level,
-        registration_id: id,
-        whatsapp_link: "https://wa.me/+8615241647328", // Replace with your WhatsApp number
-      },
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-    );
+      // Send confirmation email via EmailJS
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID_ONE,
+        {
+          to_email: form.email,
+          applicant_name: form.full_name,
+          program: form.programs || selectedProgram,
+          country: form.country,
+          education_level: form.education_level,
+          registration_id: id,
+          created_at: data[0].created_at,
+          whatsapp_link: "https://wa.me/+8615241647328",
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
 
-    setModalMessage(
-      `Thank you ${form.full_name}, your application was submitted successfully! A confirmation email has been sent to ${form.email}. Please contact us via WhatsApp to complete your registration.`
-    );
-    setShowModal(true);
+      setModalMessage(
+        `Thank you ${form.full_name}, your application was submitted successfully! 
+        A confirmation email has been sent to ${form.email}. 
+        Please contact us via WhatsApp to complete your registration.`
+      );
+      setShowModal(true);
 
-    // Reset form
-    setForm({
-      full_name: "",
-      email: "",
-      education_level: "",
-      programs: "",
-      country: "",
-      phone_number: "",
-    });
-  } catch (err) {
-    console.error(err);
-    setModalMessage("⚠️ Something went wrong. Please try again.");
-    setShowModal(true);
-  } finally {
-    setLoading(false);
-  }
-};
+      // Reset form
+      setForm({
+        full_name: "",
+        email: "",
+        education_level: "",
+        programs: "",
+        country: "",
+        phone_number: "",
+      });
+      setSelectedProgram("");
+    } catch (err) {
+      console.error(err);
+      setModalMessage("⚠️ Something went wrong. Please try again.");
+      setShowModal(true);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
+    try {
+      const fetchBachelorSch = async () => {
+        const { data, error } = await supabase
+          .from("bachelor")
+          .select("type, id");
+        if (error) throw error;
+        setScholarships((prev) => ({ ...prev, bachelor: data }));
+      };
+      const fetchMasterSch = async () => {
+        const { data, error } = await supabase
+          .from("masters")
+          .select("type, id");
+        if (error) throw error;
+        setScholarships((prev) => ({ ...prev, master: data }));
+      };
+      const fetchPhDSch = async () => {
+        const { data, error } = await supabase.from("phd").select("type, id");
+        if (error) throw error;
+        setScholarships((prev) => ({ ...prev, phd: data }));
+      };
+      fetchBachelorSch();
+      fetchMasterSch();
+      fetchPhDSch();
+    } catch (err) {
+      console.error(err);
+    }
+  }, []);
+
+  const programOptions = Object.entries(scholarships).flatMap(([level, programs]) =>
+    programs.map((program) => ({
+      value: `${program.type}(${level})`,
+      label: `${program.type} (${level})`,
+    }))
+  );
 
   return (
     <>
       <div className="form-container">
-        <h2>Students Application Form</h2>
+        <h2>Scholarship Application Form</h2>
 
         <form onSubmit={handleSubmit}>
           {/* Row 1: Full Name + Email */}
@@ -202,15 +259,30 @@ const handleSubmit = async (e) => {
               onChange={handleChange}
               className={errors.programs ? "error" : ""}
               data-shake={shakeFields.programs ? "true" : "false"}
-              required
             >
               <option value="">Select your program</option>
               <option value="Bachelor">Bachelor</option>
               <option value="Master">Master's</option>
               <option value="PhD">PhD</option>
               <option value="Diploma">Diploma</option>
-              <option value="Chinese Language">Chinese Language programs</option>
+              <option value="Chinese Language">
+                Chinese Language programs
+              </option>
             </select>
+            <span>
+                <em>-- OR --</em>
+            </span>
+            <label>Select From existing programs</label>
+            <Select
+              options={programOptions}
+              placeholder="Select or search program"
+              onChange={(selectedOption) => {
+                setSelectedProgram(selectedOption ? selectedOption.value : "");
+                setForm((prev) => ({ ...prev, programs: selectedOption ? selectedOption.value : "" }));
+              }}
+              isClearable
+              className="custom-select"
+            />
             {errors.programs && <small>{errors.programs}</small>}
           </div>
 
@@ -236,10 +308,17 @@ const handleSubmit = async (e) => {
             {errors.education_level && <small>{errors.education_level}</small>}
           </div>
 
+            <div className="scholarship-policy">
+               <div><input type="checkbox" required /></div> <div>I agree to the{" "}<a href="/scholarship-policy" target="_blank" rel="noopener noreferrer">scholarship policy</a></div>.
+            </div>
+
           <button type="submit" disabled={loading}>
             {loading ? "Submitting..." : "Submit"}
           </button>
         </form>
+        <div style={{marginTop:"10px", textAlign:"start"}}>
+          <span onClick={() => navigate("/")} style={{color:"red", cursor:"pointer"}}> <FontAwesomeIcon icon={faArrowCircleLeft} /> Return Home</span>
+          </div>
       </div>
 
       {/* Modal */}
@@ -248,7 +327,22 @@ const handleSubmit = async (e) => {
           <div className="modal">
             <h3>Application Status</h3>
             <p>{modalMessage}</p>
-            <button onClick={() => setShowModal(false)}>Close</button>
+            <div className="modal-actions">
+              <button
+                className="close-btn"
+                onClick={() => setShowModal(false)}
+              >
+                Close
+              </button>
+              <a
+                href="https://wa.me/+8615241647328"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="whatsapp-btn"
+              >
+                Contact on WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       )}
@@ -290,12 +384,14 @@ const handleSubmit = async (e) => {
         label {
           margin: 10px 0 5px;
           font-weight: 600;
-          color: #444;
+          color: #444; 
+          border: none !important;
+          text-align: left !important;
         }
 
-        input, select {
+        input, select, custom-select {
           padding: 12px;
-          border: 1px solid #ccc;
+          border: 1px solid #ccc !important;
           border-radius: 8px;
           font-size: 14px;
           margin-bottom: 8px;
@@ -386,18 +482,39 @@ const handleSubmit = async (e) => {
           line-height: 1.5;
         }
 
-        .modal button {
-          background-color: #25D366;
-          color: #fff;
-          padding: 12px 25px;
+        .modal-actions {
+          display: flex;
+          gap: 15px;
+          justify-content: center;
+        }
+
+        .close-btn {
+          background-color: #999;
+          padding: 12px 20px;
           border: none;
           border-radius: 8px;
+          color: #fff;
           font-weight: bold;
           cursor: pointer;
           transition: background 0.3s ease;
+            width: 30%;
         }
 
-        .modal button:hover {
+        .close-btn:hover {
+          background-color: #777;
+        }
+
+        .whatsapp-btn {
+          background-color: #25D366;
+          padding: 12px 20px;
+          border-radius: 8px;
+          color: #fff;
+          font-weight: bold;
+          text-decoration: none;
+          transition: background 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
           background-color: #1ebe5b;
         }
 
@@ -409,19 +526,41 @@ const handleSubmit = async (e) => {
           }
 
           .form-container {
-            margin: 20px;
             padding: 20px;
+            box-shadow:none;
           }
-
+           Select option {          
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+          }
           h2 {
             font-size: 18px;
           }
 
-          input, select, button {
+          input, select, Select, button {
             font-size: 14px;
             padding: 10px;
           }
         }
+          .scholarship-policy {
+            margin: 15px 0;
+            font-size: 14px;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+          }
+          .scholarship-policy span {
+            width: 55%;
+          }
+          .scholarship-policy a {
+            color: #4CAF50;
+            text-decoration: none;
+          }
+          .scholarship-policy a:hover {
+            text-decoration: underline;
+          }
       `}</style>
     </>
   );

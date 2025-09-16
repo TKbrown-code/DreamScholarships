@@ -5,6 +5,7 @@ import App from './App';
 import './style/index.css';
 import '@fontsource/inter';
 import { AuthProvider } from './context/AuthContext';
+import './i18n'; // initialize i18n before app renders
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>

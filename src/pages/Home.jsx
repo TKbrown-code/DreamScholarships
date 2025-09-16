@@ -10,6 +10,8 @@ import Footer from "../components/footer"
 import Nav from "../components/nav"
 import Mobile from "../components/mobileNav"
 import { FaWhatsapp, } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 
 const Home = () => {
@@ -58,7 +60,7 @@ const Home = () => {
 
             {isVisible && (
         <button onClick={scrollToTop} className="back-to-top">
-                ↑
+                <FontAwesomeIcon icon={faArrowCircleUp} />
             </button>
       )}
 

@@ -15,13 +15,16 @@ import Applicant from "./components/agentApplicaant";
 import Reset from "./components/resetpassword";
 import Newpws from "./components/newpassword";
 import Applyform from "./components/applyform"
+import LanguageSwitcher from './components/LanguageSwitcher';
+import AutoTranslator from "./context/AuthTranslator";
 
 function App() {
   return (
     <AuthProvider> 
       <ErrorBoundary>
+        <AutoTranslator />
+        <LanguageSwitcher/>
         <Routes>
-          
           <Route path="/" element={<Home />} />
           <Route path="/form" element={<Form />} />
           <Route path="/completeProfile" element={<SecondForm/>}/>

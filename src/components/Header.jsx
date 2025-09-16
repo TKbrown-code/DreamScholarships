@@ -8,6 +8,7 @@ import { supabase } from '../lib/Supabase';
 import { useProfileAvatar } from "../hooks/avaterpic";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
   const { user, signOut } = useAuth();
@@ -16,7 +17,7 @@ export default function Header() {
   const [loadingProfile, setLoadingProfile] = useState(false);
   const userId = user?.id;
   const { avatarUrl, loading } = useProfileAvatar(userId);
-
+  const navigate = useNavigate();
   // Initialize AOS
   useEffect(() => {
     AOS.init({ duration: 1000, once: true,  offset: 50 });
@@ -76,7 +77,7 @@ export default function Header() {
                 “Take the leap — discover your scholarship today!”
               </p>
               <div className="header-buttons" data-aos="fade-up" data-aos-delay="300">
-                <button className='applybtn'>
+                <button onClick={() => navigate("/applyform")} className='applybtn'>
                   Apply <FontAwesomeIcon icon={faPaperPlane} style={{ marginLeft:'5px' }} />
                 </button>
                 <a href="https://wa.me/673918431" target="_blank" rel="noopener noreferrer">

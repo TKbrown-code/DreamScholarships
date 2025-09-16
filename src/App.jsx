@@ -14,7 +14,7 @@ import Resource from "./components/StudentResource";
 import Applicant from "./components/agentApplicaant";
 import Reset from "./components/resetpassword";
 import Newpws from "./components/newpassword";
-
+import Applyform from "./components/applyform"
 
 function App() {
   return (
@@ -31,6 +31,7 @@ function App() {
           <Route path="/apply" element={<Applicant/>}/>
           <Route path="/reset" element={<Reset/>}/>
           <Route path="/new-password" element={<Newpws/>}/>
+          <Route path="/applyform" element={<Applyform/>}/>
           <Route
             path="/dashboard"
             element={

@@ -1,10 +1,10 @@
 .form-holder {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(-45deg, rgb(113, 238, 113), rgb(255, 255, 255));
   padding: 20px;
+  position: fixed;
 }
 
 /* === Form Container === */
@@ -48,6 +48,7 @@
   border: 1px solid rgba(6, 6, 48, 0.13);
   padding: 10px;
   width: 100%;
+  border-radius: 20px;
 }
 .form-container form input:focus {
   border-color: rgb(14, 221, 135);
@@ -431,4 +432,29 @@
   cursor: pointer;
   border: none;
   padding: 0;
+}
+
+/* PhoneInput custom styles */
+.react-tel-input {
+  width: 100%;
+  display: flex;
+}
+
+.react-tel-input .form-control {
+  width: 100%;
+  border: 1px solid rgba(6, 6, 48, 0.13);
+  border-radius: 20px;
+  padding-left: 48px;
+}
+
+.react-tel-input .flag-dropdown {
+  border-radius: 20px 0 0 20px;
+  border: 1px solid rgba(6, 6, 48, 0.13);
+  border-right: none;
+  background: transparent;
+}
+
+.react-tel-input .selected-flag {
+  border-radius: 20px 0 0 20px;
+  border-right: solid 1px rgba(6, 6, 48, 0.13);
 }

@@ -12,6 +12,7 @@ import { useFormValidation } from "../hooks/useFormValidation";
 import { useModal } from "../hooks/useModal";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/Supabase"; 
+import Swal from "sweetalert2";
 
 export default function Form() {
   const [isSignUp, setIsSignUp] = useState(true);
@@ -78,14 +79,13 @@ const checkExistingUser = async (email) => {
       .maybeSingle(); // optional: return single row or null
 
     if (adminError) {
-      console.log("Admin check error:", adminError.message);
-      toast.error("Error checking admin accounts: " + adminError.message);
+      toast.error("Something went wrong");
       return false;
     }
 
     if (adminData) {
-      toast.error("Admins are not allowed to sign up!");
-      return true; // stop if email belongs to an admin
+      toast.error("Sorry, you are not allowed to sign up");
+      return true; 
     }
 
     // 2️⃣ Check if the email exists in the profiles table
@@ -96,16 +96,20 @@ const checkExistingUser = async (email) => {
       .maybeSingle(); // return single row or null
 
     if (profileError) {
-      toast.error("Error checking existing users: " + profileError.message);
+      toast.error("Something went wrong!");
+      console.error("Profile check error:", profileError.message);
       return false;
     }
 
     // 3️⃣ Return true if email exists, false otherwise
-    const exists = !!profileData;
-    return exists;
+    if(profileData) {
+      console.log("user: ", profileData);
+      return true;
+    }
 
+    return false;
   } catch (err) {
-    toast.error("Unexpected error: " + (err?.message || String(err)));
+    toast.error("Something went wrong");
     return false;
   }
 };
@@ -125,100 +129,90 @@ const checkExistingUser = async (email) => {
     });
 
     if (error) {
-      toast.error("Signup failed: " + error.message);
+      toast.error("Signup failed!");
       return;
     }
 
-    showModal("Signup Successful", "Check your email to verify before signing in.", [
-      { label: "Close", onClick: closeModal },
-      {
-        label: modalLoading ? "Signing in..." : "Complete Sign In",
-        onClick: async () => {
-          try {
-            setModalLoading(true);
-            await signInUser();
-            closeModal();
-          } finally {
-            setModalLoading(false);
-          }
-        },
-        style: { backgroundColor: "green", color: "white" },
-        disabled: modalLoading,
-      },
-    ]);
+    Swal.fire({
+      title: "Signup Successful",
+      text: "Check your email to verify before signing in.",
+      icon: "success",
+      confirmButtonText: "Close"
+    }).then(async () => {
+      setModalLoading(true);
+      await signInUser();
+    });
   } catch (err) {
     toast.error("Unexpected signup error: " + (err?.message || String(err)));
   }
 };
 
   const signInUser = async () => {   
-    if(!isSignUp) 
-    {
+    if(!isSignUp) {
+      // Regular sign in flow
+      const { data: adminData, error: adminError } = await supabase
+        .from("admins")
+        .select("admin_email")
+        .eq("admin_email", form.email)
+        .maybeSingle();
 
-    const { data: adminData, error: adminError } = await supabase
-      .from("admins")
-      .select("admin_email")
-      .eq("admin_email", form.email)
-      .maybeSingle(); // optional: return single row or null
-
-    if (adminError) {
-      console.log("Admin check error:", adminError.message);
-      toast.error("Error checking admin accounts: " + adminError.message);
-      return false;
-    }
-
-    if (adminData) {
-      toast.error("Admins cannot to sign into users profile!");
-       return // stop if email belongs to an admin
-    }
-    else{
-    try {  
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: form.email,
-        password: form.password,
-      });
-       
-      if (error) {
-        setIsLoading(false);
-        toast.error("Sign in failed: " + error.message);
-        return;
+      if (adminError) {
+        console.log("Admin check error:", adminError.message);
+        toast.error("Error checking admin accounts: " + adminError.message);
+        return false;
       }
 
-      setIsLoading(false);
-        showModal("Signed in successfully!", [
-        { label: "Close", onClick: navigate("/dashboard")},
-      ])
-
-    } catch (err) {
-      toast.error("Unexpected sign-in error: " + (err?.message || String(err)));
-    }
-  }
-}
-
-    if(isSignUp){
-        try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: form.email,
-        password: form.password,
-      });
-
-      if (error) {
-        setIsLoading(false);
-        toast.error("Sign in failed: " + error.message);
-        return;
+      if (adminData) {
+        toast.error("Admins cannot sign into users profile!");
+        return
       }
-      else
-       {  // Insert profile if needed 
-          await insertUserProfile(user);
-       }
+      
+      try {  
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: form.email,
+          password: form.password,
+        });
+         
+        if (error) {
+          setIsLoading(false);
+          toast.error("Sign in failed: " + error.message);
+          return;
+        }
+
+        setIsLoading(false);
+        showModal("Signed in successfully!", "You have been successfully signed in.", [
+          { label: "Close", onClick: () => navigate("/dashboard")}
+        ])
+
+      } catch (err) {
+        toast.error("Unexpected sign-in error: " + (err?.message || String(err)));
+      }
+    } else {
+      // Sign up flow - after email verification
+      try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: form.email,
+          password: form.password,
+        });
+
+        if (error) {
+          setIsLoading(false);
+          toast.error("Sign in failed: " + error.message);
+          return;
+        }
+        else {
+          // Insert profile if needed 
+          await insertUserProfile(data.user);
+        }
 
         // Redirect after everything is done
-       showModal("Signed in successfully!", [
-        { label: "Continue", onClick: navigate("/completeProfile")},
-       ])
+        showModal("Signed in successfully!", "Please complete your profile to continue.", [
+          { label: "Continue", onClick: () => navigate("/completeProfile")}
+        ])
     
-      }catch (err) {
-      toast.error("Unexpected sign-in error: " + (err?.message || String(err)));}
+      } catch (err) {
+        toast.error("Unexpected sign-in error: " + (err?.message || String(err)));
+      }
     }
   };
 
@@ -279,7 +273,7 @@ const checkExistingUser = async (email) => {
                 {errors.second_name && <p className="error">{errors.second_name}</p>}
               </div>
               <div>
-                <PhoneInput country="cm" value={form.number} onChange={(phone) => setForm((prev) => ({ ...prev, number: phone }))} inputStyle={{ width: "100%", border:"1px solid rgba(6, 6, 48, 0.13)" }} disabled={isLoading} />
+                <PhoneInput country="cm" value={form.number} onChange={(phone) => setForm((prev) => ({ ...prev, number: phone }))} disabled={isLoading} />
                 {errors.number && <p className="error">{errors.number}</p>}
               </div>
             </>

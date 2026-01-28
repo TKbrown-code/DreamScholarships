@@ -49,7 +49,7 @@ export default function PasswordReset() {
 
 
   return (
-    <div className="formholder" style={{width:'100%', height:"100vh", background:"linear-gradient(-45deg, rgb(113, 238, 113), rgb(255, 255, 255))"}}>
+    <div className="formholder" style={{width:'100%', height:"100vh"}}>
       <div style={{width:"100%", display:"flex", justifyContent:"center", transform:'translatey(250px)'}}>
       <div className="form-container">
         <div className="formheader">

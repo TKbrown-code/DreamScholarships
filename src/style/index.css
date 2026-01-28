@@ -24,6 +24,7 @@ html,body{
   left: 0;
   position: sticky;
   z-index: 2000;
+  padding: 10px;
 }
 
 .nav .navbar {
@@ -170,6 +171,9 @@ header .content {
   text-decoration: none;
   background: rgba(39, 41, 68, 0.932);
   cursor: pointer;
+  border-radius: 10px;
+  width: 40%;
+  text-align: center;
 }
 
 .header-buttons a {

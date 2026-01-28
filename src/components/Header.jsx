@@ -69,7 +69,7 @@ export default function Header() {
         <div className="overlay">
           <div className="content">
             <div className="header-content" data-aos="fade-down">
-              <h1 data-aos="fade-right">From Africa to China — Your Global Education Journey Starts Here</h1>
+              <h1 data-aos="fade-right">China Scholarships for African Students - Start Your Global Education Journey</h1>
               <p data-aos="fade-right" data-aos-delay="100">
                 <strong>Dream Scholarship</strong> is a profit-making scholarship agency dedicated to helping African students secure scholarships in China.
               </p>

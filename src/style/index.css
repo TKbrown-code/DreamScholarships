@@ -127,7 +127,7 @@ header .content {
 .overlay {
   width: 100%;
   height: inherit;
-  background-color: rgba(10, 10, 10, 0.281);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.281),rgba(0, 0, 0, 0.281));
 }
 
 .header-content {

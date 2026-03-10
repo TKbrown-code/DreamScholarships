@@ -370,7 +370,7 @@ function Scholarships() {
               <button className="close" onClick={() => setModalOpen(false)}>
               Exit
             </button>
-            <button className="close"> <a href="https://wa.me/673918431" target="_blank" rel="noopener noreferrer">
+            <button className="close"> <a href={`https://wa.me/+8615241647328?text=${encodeURIComponent(`Greetings, i want to apply for this scholarship ${modalData.type}, id:${modalData.id}. Please how can i go about it?`)}`} target="_blank" rel="noopener noreferrer">
                   Apply  <FontAwesomeIcon icon={faPaperPlane}/></a>
               </button>
             </div>

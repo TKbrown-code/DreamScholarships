@@ -54,7 +54,7 @@ const Home = () => {
             <Frequentlyaskquestions />
             <Footer />
             </div>
-             <a href="https://wa.me/+8615241647328" className="whatsapp">
+             <a href={`https://wa.me/+8615241647328?text=${encodeURIComponent("Greetings, please can i know more about dream scholarships? (from website)")}`} className="whatsapp">
             <FaWhatsapp/>
             </a>
 

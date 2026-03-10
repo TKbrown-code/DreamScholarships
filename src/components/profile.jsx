@@ -45,7 +45,7 @@ export default function Profile() {
       {/* Profile Card */}
       <div className="profile-card">
         <div className="profile-avatar">
-          <img src={avatar} alt={fullName} />
+          <img src={avatar} alt={`${fullName} dream scholarships`} />
         </div>
         <div className="profile-info">
           <h2>{profile?.full_name}</h2>

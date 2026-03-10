@@ -80,7 +80,7 @@ export default function Header() {
                 <button onClick={() => navigate("/applyform")} className='applybtn'>
                   Apply <FontAwesomeIcon icon={faPaperPlane} style={{ marginLeft:'5px' }} />
                 </button>
-                <a href="https://wa.me/673918431" target="_blank" rel="noopener noreferrer">
+                <a href={`https://wa.me/+8615241647328?text=${encodeURIComponent("Greetings, please can i know more about dream scholarships? (from website)")}`} target="_blank" rel="noopener noreferrer">
                   Contact <FontAwesomeIcon icon={faMessage}/>
                 </a>
               </div>

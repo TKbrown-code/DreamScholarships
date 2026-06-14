@@ -145,7 +145,7 @@ function Scholarships() {
                   <strong>Age Limit:</strong> {item.age_limit || "N/A"}
                 </p>
                 <div className="pay-deadline">
-                  <span>{formatCurrency(item.amount)}</span>
+                  { /*<span>{formatCurrency(item.amount)}</span> */}
                   <span>
                     Deadline:{" "}
                     {item.deadline
@@ -358,10 +358,10 @@ function Scholarships() {
               <strong>Age Limit:</strong> {modalData.age_limit || "N/A"}
             </p>
             <p>
-              <strong>Price:</strong> {formatCurrency(modalData.amount)}
+              { /* <strong>Price:</strong> {formatCurrency(modalData.amount)} */ }
             </p>
             <p>
-              <strong>Deadline:</strong>{" "}-
+              <strong>Deadline:</strong>{" "}
               {modalData.deadline
                 ? new Date(modalData.deadline).toLocaleDateString()
                 : "N/A"}

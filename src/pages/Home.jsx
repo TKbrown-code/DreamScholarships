@@ -2,12 +2,12 @@ import Header from "../components/landing/Header";
 import About_china from "../components/landing/About_china"
 import Scholarships from "../components/landing/Scholarships"
 import About from "../components/landing/About"
-import Slide from "../components/landing/slides"
-import Testimonial from "../components/landing/testimonial";
+import Slide from "../components/landing/Slides"
+import Testimonial from "../components/landing/Testimonial";
 import Frequentlyaskquestions from "../components/landing/FRQ.jsx"
-import Footer from "../components/landing/footer"
-import Nav from "../components/landing/nav"
-import Mobile from "../components/landing/mobileNav"
+import Footer from "../components/landing/Footer"
+import Nav from "../components/landing/Nav"
+import Mobile from "../components/landing/MobileNav"
 import { FaWhatsapp, } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";

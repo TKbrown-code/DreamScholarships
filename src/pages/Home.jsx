@@ -1,6 +1,6 @@
 import Header from "../components/landing/Header";
 import About_china from "../components/landing/about_china"
-import Scholarships from "../components/landing/scholarships"
+import Scholarships from "../components/landing/Scholarships"
 import About from "../components/landing/About"
 import Slide from "../components/landing/slides"
 import Testimonial from "../components/landing/testimonial";

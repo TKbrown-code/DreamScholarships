@@ -17,6 +17,7 @@ import Newpws from "./components/newpassword";
 import Applyform from "./components/applyform"
 import LanguageSwitcher from './components/LanguageSwitcher';
 import AutoTranslator from "./context/AuthTranslator";
+import Team from "./pages/team.jsx";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path="/team" element={<Team />} />
         </Routes>
       </ErrorBoundary>
       <div style={{position: 'absolute'}}>

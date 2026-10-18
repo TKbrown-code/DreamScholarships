@@ -257,6 +257,15 @@ function Mission() {
     };
   }, []);
 
+  const teamFooter = {
+    marginTop: "40px",
+    textAlign: "center",
+    padding: "20px",
+    lineHeight: "1.6",
+    color: "#181717",
+    fontSize: "16px",
+  };
+
   return (
     <section className="team" style={{overflowX:'hidden'}}>
       <div className="team-header" data-aos="fade-down">
@@ -289,8 +298,17 @@ function Mission() {
           </div>
         ))}
       </div>
+      <div className="team-footer" style={teamFooter}>
+        <p>
+          Our team is passionate about helping students achieve their dreams and we are proud to be a part of the Dream Scholarship community. We believe that every student deserves the opportunity to study abroad and we are committed to making that happen. We are constantly striving to improve our services and we welcome feedback from our clients to help us achieve that goal.
+        </p>
+        <span>
+          <a href="/team">Click here to see all our Team Members</a>
+        </span>
+      </div>
     </section>
   );
+
 }
 
 function About() {

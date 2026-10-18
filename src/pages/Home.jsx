@@ -1,5 +1,4 @@
 import Header from "../components/landing/Header";
-import Welcome from "../components/landing/welcome"
 import About_china from "../components/landing/about_china"
 import Scholarships from "../components/landing/scholarships"
 import About from "../components/landing/About"

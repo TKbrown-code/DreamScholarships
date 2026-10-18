@@ -1,219 +1,305 @@
-.slidecontainer{
-    width: 90%;
-    height: 400px;
-    margin: auto;
-    position: relative;
-    background: #090727ff;
+#About-us.about-contact-section {
+  margin: 0;
+  padding: clamp(3rem, 7vw, 6rem) 0;
+  background: linear-gradient(180deg, #f5faf7 0%, #f4f9fd 100%);
 }
-img{
-    width: 100%;
-    height: 100%;
-}
-.slidecontainer img { width: 100%; height: 100%; display: block; }
 
-.slide-overlay {
-  position: absolute;
-  inset: 0;
-  background: #090727ff;
+#About-us .slidecontainer {
+  position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: stretch;
+  width: min(88%, 1200px);
+  min-height: 340px;
+  height: auto;
+  margin: 0 auto;
   overflow: hidden;
-  font-size: 4em;
-  color: #fff;
-  font-weight: 800;
-  backdrop-filter: brightness(0.5) contrast(1.2);
+  border: 1px solid rgba(0, 26, 51, 0.08);
+  border-radius: 24px;
+  background: linear-gradient(135deg, #001a33 0%, #082d47 58%, #0b3a48 100%);
+  box-shadow: 0 20px 50px rgba(0, 26, 51, 0.16);
 }
 
-.slide-overlay span {
+#About-us .slide-overlay {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: inherit;
+  padding: 3rem 2rem 6.5rem;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(62, 180, 121, 0.22), transparent 30%),
+    linear-gradient(135deg, #001a33 0%, #082d47 58%, #0b3a48 100%);
+  color: #fff;
+  text-align: center;
+}
+
+#About-us .slide-overlay::before,
+#About-us .slide-overlay::after {
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  border: 1px solid rgba(125, 235, 183, 0.2);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+#About-us .slide-overlay::before {
+  top: -150px;
+  left: -80px;
+}
+
+#About-us .slide-overlay::after {
+  right: -120px;
+  bottom: -175px;
+  width: 300px;
+  height: 300px;
+}
+
+#About-us .slide-overlay > span {
+  position: relative;
+  z-index: 1;
   display: inline-block;
-  white-space: nowrap;
+  max-width: 100%;
+  color: #fff;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  text-align: center;
+  text-wrap: balance;
+  white-space: normal;
   will-change: transform, opacity;
 }
 
-/* Durations must match IN_MS / OUT_MS in the component */
-.slide-in {
+#About-us .slide-in {
   animation: slideInRight 0.8s ease forwards;
 }
 
-.slide-out {
+#About-us .slide-out {
   animation: slideOutLeft 0.8s ease forwards;
 }
 
 @keyframes slideInRight {
   from { transform: translateX(100%); opacity: 0; }
-  to   { transform: translateX(0%);   opacity: 1; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes slideOutLeft {
-  from { transform: translateX(0%);    opacity: 1; }
-  to   { transform: translateX(-100%); opacity: 0; }
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(-100%); opacity: 0; }
 }
 
-.slide-contact {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    height: 50px;
-    background-color: #110f0f04;
-    width: 100%;
-    gap: 20px;
-    padding: 5px;
-    align-items: center;
-    justify-content: space-between;
-    transition: background 0.5s ease;
-}
-.slide-overlay:hover .slide-contact {
-    background-color: #05051f;
-}
-.contact-links{
-    display: flex;
-    gap: 15px;
-}
-.slide-contact a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.2em;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-.slide-contact a:hover {
-    color: #f0f0f0;
-}
-.slide-contact .logo {
-    width: 200px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    font-size: 0.3em;
-    gap: 10px;
-    text-wrap: nowrap;
-}
-.slide-contact .logo .image {
-    width: 40px;
-    height: 40px;
-}
-.slide-contact .logo img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-}
-.circle{
-    width: 10px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: #f80a0a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.info{
-    position: absolute;
-    left: 0;
-    top: -350px;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    font-size: 0.3em;
-    gap: 5px;
-    cursor: pointer;
-}
-.info p{
-    font-size: 0.5em;
-    color: #fff;
-    text-align: center;
-    position: absolute;
-    text-wrap: nowrap;
-    left: 40px;
-    background-color: #ffffff;
-    padding: 5px;
-    border-radius: 5px 50px;
-    color: #060630;
-    z-index: 1000;
-}
-.info span:hover + p {
-    display: block;
-}
-@media  (max-width:600px) {
-    .slidecontainer{
-        width: 100%;
-    }
-    .slide-overlay{
-        font-size: 2em;
-        word-wrap: wrap;
-    }
-    .slide-overlay span{
-        white-space: wrap;
-        text-align: center;
-    }
-    .info{
-        left: 0;
-        top: -300px;
-        width: 100%;
-    }
+#About-us .slide-contact {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 76px;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+  color: var(--text-color);
 }
 
-@media (max-width: 768px) {
-    .slidecontainer {
-        width: 100%;
-        height: 300px;
-    }
-    .slide-overlay {
-        font-size: 3em;
-    }
-    .slide-overlay span{
-        white-space: wrap;
-        text-align: center;
-    }
-    .info{
-        left: 0;
-        top: -300px;
-        width: 100%;
-    }
+#About-us .slide-contact .info {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 36px;
+  font-size: 0.85rem;
 }
 
-@media (max-width: 480px) {
-    .slidecontainer {
-        width: 100%;
-        height: 250px;
-    }
-    .slide-overlay {
-        font-size: 2em;
-    }
-    .slide-overlay span{
-        white-space: wrap;
-        text-align: center;
-    }
+#About-us .slide-contact .info .circle {
+  display: none;
 }
 
-@media (max-width: 360px) {
-    .slidecontainer {
-        width: 100%;
-        height: 200px;
-    }
-    .slide-overlay {
-        font-size: 1.5em;
-    }
-    .slide-overlay span{
-        white-space: wrap;
-        text-align: center;
-    }
+#About-us .slide-contact .info span {
+  display: grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: #e8f7ef;
+  color: #218653;
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
-@media (max-width: 320px) {
-    .slidecontainer {
-        width: 100%;
-        height: 180px;
-    }
-    .slide-overlay {
-        font-size: 1.2em;
-    }
-    .slide-overlay span{
-        white-space: wrap;
-        text-align: center;
-    }
+#About-us .slide-contact .info p {
+  position: absolute;
+  bottom: calc(100% + 0.55rem);
+  left: 0;
+  width: max-content;
+  max-width: min(75vw, 250px);
+  margin: 0;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  background: var(--text-color);
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
+#About-us .slide-contact .info span:hover + p,
+#About-us .slide-contact .info span:focus + p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#About-us .contact-links {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+#About-us .slide-contact .contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.4rem !important;
+  border-radius: 7px !important;
+  color: #334155;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+#About-us .slide-contact .contact-links a:hover {
+  background: #e8f7ef;
+  color: #218653;
+}
+
+#About-us .slide-contact .contact-links svg {
+  font-size: 1rem;
+}
+
+#About-us .slide-contact .logo {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.55rem;
+  width: auto;
+  height: auto;
+  color: #efb810;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#About-us .slide-contact .logo .image {
+  width: 38px;
+  height: 38px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+#About-us .slide-contact .logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: inherit;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  #About-us .slidecontainer {
+    width: 90%;
+    min-height: 380px;
+  }
+
+  #About-us .slide-overlay {
+    padding: 2.5rem 1.5rem 8.5rem;
+  }
+
+  #About-us .slide-contact {
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    flex-wrap: wrap;
+  }
+
+  #About-us .contact-links {
+    order: 3;
+    flex-basis: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  #About-us.about-contact-section {
+    padding: 2.75rem 0;
+  }
+
+  #About-us .slidecontainer {
+    width: 90%;
+    min-height: 430px;
+    border-radius: 18px;
+  }
+
+  #About-us .slide-overlay {
+    padding: 2rem 1.1rem 11rem;
+  }
+
+  #About-us .slide-overlay > span {
+    font-size: clamp(1.8rem, 9vw, 2.5rem);
+  }
+
+  #About-us .slide-contact {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    justify-content: flex-start;
+    gap: 0.35rem 0.75rem;
+    padding: 0.75rem;
+  }
+
+  #About-us .contact-links {
+    gap: 0.25rem 0.55rem;
+  }
+
+  #About-us .slide-contact .contact-links a {
+    font-size: 0.7rem;
+  }
+
+  #About-us .slide-contact .logo {
+    margin-left: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #About-us .slide-in,
+  #About-us .slide-out {
+    animation-duration: 0.01ms;
+  }
+
+  #About-us .slide-contact,
+  #About-us .slide-contact a {
+    transition-duration: 0.01ms;
+  }
+}

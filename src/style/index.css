@@ -1,93 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
-  --main-color: rgb(76, 245, 175);
-  --text-color: white;
-  --other-color: rgb(20, 22, 44);
+  --main-color: rgb(62, 180, 121);
+  --text-color: rgb(0, 26, 51);
+  --other-color: white;
   --other-color2: rgb(255, 203, 107);
 }
-html,body{
+
+html,
+body {
   scroll-behavior: smooth;
 }
+
 /* Reset */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-/* NAV */
-.nav {
-  width: 100%;
-  background-color: var(--other-color);
-  top: 0;
-  left: 0;
-  position: sticky;
-  z-index: 2000;
-  padding: 10px;
-}
-
-.nav .navbar {
-  width: clamp(85%, 90%, 100%);
-  display: flex;
-  justify-content: space-between;
-  margin: auto;
-  align-items: center;
-}
-
-.navbar ul {
-  display: flex;
-  gap: 1.875rem;
-}
-
-.navbar ul li {
-  list-style: none;
-  padding: 0.625rem;
-}
-
-.navbar ul li a {
-  text-decoration: none;
-  color: var(--text-color);
-  position: relative;
-  font-size: 1.2em;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-.navbar ul li a:hover {
-  color: var(--main-color);
-}
-
-.navbar ul li a::before {
-  content: "";
-  width: 0;
-  left: 0;
-  bottom: 0;
-  height: 1px;
-  position: absolute;
-  background-color: var(--main-color);
-  transition: width 0.3s ease;
-}
-
-.navbar ul li a:hover::before {
-  width: 100%;
-}
-
-.logo {
-  color: var(--main-color);
-  font-size: 1.5em;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  cursor: pointer;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-.logo .icon {
-  width: 20px;
-  height: 25px;
-  background-color: var(--text-color);
-  transform: rotate(45deg);
-  box-shadow: 3px 2px 0px var(--main-color);
 }
 
 .apply a {
@@ -97,6 +27,10 @@ html,body{
   text-decoration: none;
   color: var(--other-color);
   transition: background 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .apply a:hover {
@@ -106,9 +40,9 @@ html,body{
 
 /* Header */
 header {
-  height: 85vh;
+  height: 105vh;
   width: 100%;
-  background: url('../assets/bbc.jpg');
+  background: url('../assets/Global\ Graduate\ Hero\ with\ Green\ Accents\ \(1\).png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -127,7 +61,6 @@ header .content {
 .overlay {
   width: 100%;
   height: inherit;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.281),rgba(0, 0, 0, 0.281));
 }
 
 .header-content {
@@ -140,7 +73,10 @@ header .content {
   margin-bottom: 10px;
   font-family: sans-serif;
   font-weight: 800;
-  text-shadow: #021c38b4 2px 2px 2px;
+}
+
+.header-cto{
+  color: var(--text-color);
 }
 
 .header-content p {
@@ -149,7 +85,6 @@ header .content {
   margin-bottom: 10px;
   line-height: 1.5;
   font-weight: 800;
-  text-shadow: #021c38b4 2px 2px 2px;
 }
 
 .header-content strong {
@@ -163,27 +98,37 @@ header .content {
   margin-top: 10px;
 }
 
-.applybtn,
-.header-buttons a {
+.explore-btn,
+.advisor-btn {
   padding: 10px;
-  color: var(--text-color);
   font-size: 1.2em;
   text-decoration: none;
-  background: rgba(39, 41, 68, 0.932);
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 30px;
   width: 40%;
   text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.explore-btn{
+  color: var(--other-color);
+  background: var(--main-color);
 }
 
 .header-buttons a {
-  border: solid 4px rgba(255, 255, 255, 0.93);
+  border: var(--text-color) solid 2px;
   background: none;
-  transition: background 0.3s ease;
+  color: var(--text-color);
 }
 
 .applybtn:hover {
   background-color: rgba(2, 1, 8, 0.63);
+  transform: translateY(-2px);
 }
 
 .header-buttons a:hover {
@@ -271,103 +216,6 @@ header .content {
   cursor: pointer;
   font-size: 1.2em;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-/* MOBILE NAV (hidden by default) */
-.mobile-nav {
-  background-color: var(--other-color);
-  display: none;
-  top: 0;
-  padding-top: 0;
-  position: sticky;
-  width: 100%;
-  z-index: 2000;
-}
-.more-content-mobile{
-  position: absolute;
-  background-color: #222;
-  z-index: 1;
-  padding: 10px;
-}
-
-.more-btn-mobile{
-  background:none;
-  border: none;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: rgb(4, 3, 51);
-}
-
-.mobile-nav .navbar{
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  align-items: center;
-}
-
-.mobile-nav .nav-content{
-  display: flex;
-  position: absolute;
-  z-index: 1000;
-  top: 58px;
-  left: 0px;
-  background-color: aliceblue;
-  box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.247);
-  flex-direction: column;
-  padding: 10px;
-  height: 100vh;
-  transition: transform 0.3s ease-in-out;
-  width: 55%;
-}
-.nav-content ul{
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-}
-.nav-content ul li a{
-  color: black;
-}
-.mobile-toggle-header{
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 5px;
-  font-size: 1.3em;
-  border-bottom: solid rgba(128, 128, 128, 0.411) 1px;
-  align-items: center;
-  font-weight: 800;
-}
-.nav-content .apply{
-  padding: 10px;
-}
-.nav-content .apply a{
-  background-color: var(--other-color);
-  color: aliceblue;
-}
-.mobile-btn{
-  padding: 5px;
-  color: var(--text-color);
-  border: none;
-  font-size: 1.3em;
-  cursor: pointer;
-  background: none;
-  border: solid white 2px;
-}
-.nav-content .apply{
-  padding: 10px;
-}
-.nav-content .apply a{
-  background-color: var(--other-color);
-  color: aliceblue;
-}
-.mobile-btn{
-  padding: 5px;
-  color: var(--text-color);
-  border: none;
-  font-size: 1.3em;
-  cursor: pointer;
-  background: none;
-  border: solid white 2px;
 }
 
 .team-container,
@@ -1564,10 +1412,6 @@ body::-webkit-scrollbar {
     display: flex;
   }
 
-  .nav .navbar,
-  .mobile-nav .navbar {
-    width: 95%;
-  }
 }
 
 /* --------- 1100px --------- */
@@ -1780,14 +1624,6 @@ body::-webkit-scrollbar {
     display: flex;
   }
 
-  .nav {
-    display: none;
-  }
-
-  .mobile-nav {
-    display: block;
-  }
-
   .welcome-cards .card {
     flex: 1 1 100%;
     max-width: 100%;
@@ -1815,18 +1651,6 @@ body::-webkit-scrollbar {
 
   .header-buttons {
     justify-content: center;
-  }
-
-  .nav {
-    display: none;
-  }
-
-  .nav-content.active {
-    display: block;
-  }
-
-  .mobile-nav {
-    display: block;
   }
 
   .scholarship-content {

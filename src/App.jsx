@@ -8,14 +8,14 @@ import Home from "./pages/Home";
 import Form from "./pages/form";
 import UserDashboard from "./pages/user_dashboard";
 import ErrorBoundary from "./context/ErrorBoundary";
-import SecondForm from "./components/secondForm";
-import Dictionary from "./components/dictionary";
-import Resource from "./components/StudentResource";
-import Applicant from "./components/agentApplicaant";
-import Reset from "./components/resetpassword";
-import Newpws from "./components/newpassword";
-import Applyform from "./components/applyform"
-import LanguageSwitcher from './components/LanguageSwitcher';
+import SecondForm from "./components/auth/secondForm";
+import Dictionary from "./components/application/dictionary";
+import Resource from "./components/application/StudentResource";
+import Applicant from "./components/application/agentApplicaant";
+import Reset from "./components/auth/resetpassword";
+import Newpws from "./components/auth/newpassword";
+import Applyform from "./components/application/applyform"
+import LanguageSwitcher from './components/shared/LanguageSwitcher';
 import AutoTranslator from "./context/AuthTranslator";
 import Team from "./pages/team.jsx";
 

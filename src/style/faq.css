@@ -1,0 +1,198 @@
+.faq-section {
+  margin: 0;
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f4f9fd 0%, #fff 100%);
+}
+
+.faq-section .faq-container {
+  width: min(88%, 900px);
+  max-width: none;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.faq-section .faq-container .h {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.faq-section .faq-container h1 {
+  margin: 0 0 0.75rem;
+  color: var(--text-color);
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+
+.faq-section .faq-container .small {
+  max-width: 680px;
+  margin: 0 0 1.25rem;
+  color: #526171;
+  font-size: 1rem;
+  line-height: 1.65;
+  text-align: center;
+}
+
+.faq-section .faq-container .line {
+  width: 68px;
+  height: 4px;
+  margin: 0 auto;
+  border-radius: 999px;
+  background: var(--main-color);
+}
+
+.faq-section .frq-card {
+  margin: 0 0 0.8rem;
+  overflow: hidden;
+  border: 1px solid rgba(0, 26, 51, 0.08);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0, 26, 51, 0.045);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.faq-section .frq-card:hover {
+  border-color: rgba(62, 180, 121, 0.35);
+  box-shadow: 0 10px 24px rgba(0, 26, 51, 0.08);
+  transform: translateY(-1px);
+}
+
+.faq-section .faq-header {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  background: #fff;
+  transition: background 0.2s ease;
+}
+
+.faq-section .faq-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.15rem 1.25rem;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-section .faq-toggle-btn h3 {
+  margin: 0;
+  color: var(--text-color);
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.5;
+  transition: color 0.2s ease;
+}
+
+.faq-section .faq-toggle-btn > span {
+  display: grid;
+  flex: 0 0 32px;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e8f7ef;
+  color: #218653;
+  font-size: 0.8rem;
+  transition: transform 0.25s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.faq-section .faq-toggle-btn:hover h3,
+.faq-section .faq-toggle-btn:focus-visible h3 {
+  color: #218653;
+}
+
+.faq-section .faq-toggle-btn:focus-visible {
+  outline: 3px solid rgba(62, 180, 121, 0.3);
+  outline-offset: -3px;
+}
+
+.faq-section .frq-card.open {
+  border-color: rgba(62, 180, 121, 0.35);
+}
+
+.faq-section .frq-card.open .faq-header {
+  background: #f4fbf7;
+}
+
+.faq-section .frq-card.open .faq-toggle-btn h3 {
+  color: #218653;
+}
+
+.faq-section .frq-card.open .faq-toggle-btn > span {
+  transform: rotate(180deg);
+  background: var(--main-color);
+  color: #fff;
+}
+
+.faq-section .faq-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 1.25rem;
+  transition: max-height 0.35s ease, padding 0.3s ease;
+}
+
+.faq-section .frq-card.open .faq-content {
+  max-height: 300px;
+  padding: 0 1.25rem 1.2rem;
+}
+
+.faq-section .faq-content p {
+  margin: 0;
+  color: #526171;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .faq-section {
+    padding: 3rem 0;
+  }
+
+  .faq-section .faq-container {
+    width: 90%;
+  }
+
+  .faq-section .faq-container h1 {
+    font-size: 2rem;
+  }
+
+  .faq-section .faq-container .small {
+    font-size: 0.92rem;
+  }
+
+  .faq-section .faq-container .h {
+    margin-bottom: 1.75rem;
+  }
+
+  .faq-section .faq-toggle-btn {
+    padding: 1rem;
+  }
+
+  .faq-section .faq-toggle-btn h3 {
+    font-size: 0.92rem;
+  }
+
+  .faq-section .faq-content,
+  .faq-section .frq-card.open .faq-content {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .faq-section .frq-card.open .faq-content {
+    padding-bottom: 1rem;
+  }
+}

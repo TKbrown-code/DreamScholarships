@@ -1,0 +1,355 @@
+.landing-footer {
+  display: block;
+  margin: 0;
+  padding: clamp(2.5rem, 5vw, 4rem) 0 0;
+  background: #f4f9fd;
+  color: var(--text-color);
+  text-align: left;
+}
+
+.landing-footer .footer-sectionone {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: stretch;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  width: min(88%, 1200px);
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-color);
+}
+
+.landing-footer .section1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+}
+
+.landing-footer .section1 h2,
+.landing-footer .send-message h2 {
+  margin: 0;
+  color: var(--text-color);
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.landing-footer .section1 p,
+.landing-footer .send-message > p {
+  margin: 0;
+  color: #526171;
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+.landing-footer .section1 > a {
+  display: inline-flex;
+  margin-top: 0.4rem;
+  text-decoration: none;
+}
+
+.landing-footer .section1 > a button,
+.landing-footer .send-message form button,
+.landing-footer .subcribe button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.7rem 1.15rem;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: var(--main-color);
+  color: #fff;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.landing-footer .section1 > a button {
+  width: auto;
+  border: 0;
+}
+
+.landing-footer .section1 > a button:hover,
+.landing-footer .send-message form button:hover,
+.landing-footer .subcribe button:hover {
+  transform: translateY(-1px);
+  background: #218653;
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(0, 26, 51, 0.14);
+}
+
+.landing-footer .section2 {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  width: 100%;
+  height: auto;
+}
+
+.landing-footer .section2 .send-message {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 100% !important;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid rgba(0, 26, 51, 0.08);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(0, 26, 51, 0.08);
+}
+
+.landing-footer .send-message h2 {
+  font-size: 1.35rem;
+  color: var(--text-color);
+}
+
+.landing-footer .send-message > p {
+  font-size: 0.88rem;
+  color: #526171;
+}
+
+.landing-footer .section2 .send-message .message-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.5rem 0 0;
+  width: 100%;
+  min-width: 0;
+}
+
+.landing-footer .send-message input,
+.landing-footer .send-message textarea,
+.landing-footer .subcribe input[type="email"] {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid rgba(0, 26, 51, 0.12);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text-color);
+  font: 400 0.9rem 'Poppins', 'Montserrat', sans-serif;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.landing-footer .send-message textarea {
+  min-height: 180px;
+  height: 180px;
+  padding: 0.4rem 0.6rem;
+  resize: vertical;
+}
+
+.landing-footer .send-message input:focus,
+.landing-footer .send-message textarea:focus,
+.landing-footer .subcribe input[type="email"]:focus {
+  border-color: var(--main-color);
+  box-shadow: 0 0 0 3px rgba(62, 180, 121, 0.18);
+}
+
+.landing-footer .send-message form button {
+  width: 100%;
+}
+
+.landing-footer .send-message form > p {
+  min-height: 1.2rem;
+  margin: 0;
+  color: #218653;
+  font-size: 0.85rem;
+}
+
+.landing-footer .subcribe {
+  display: flex;
+  gap: 0.65rem;
+  width: min(88%, 1200px);
+  max-width: 560px;
+  margin: 2rem auto 0.5rem;
+  padding: 1rem;
+  border: 1px solid rgba(0, 26, 51, 0.08);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0, 26, 51, 0.05);
+}
+
+.landing-footer .subcribe input[type="email"] {
+  flex: 1;
+  min-width: 0;
+}
+
+.landing-footer .subcribe button {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.landing-footer .subscription-status {
+  width: min(88%, 1200px);
+  min-height: 1.3rem;
+  margin: 0 auto 1rem;
+  color: #9b2c2c !important;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.landing-footer .footer-content {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem 2rem;
+  width: 100%;
+  margin: 2rem 0 0;
+  padding: 1.5rem max(6%, calc((100% - 1200px) / 2));
+  border-top: 1px solid rgba(0, 26, 51, 0.1);
+  background: #001a33;
+  box-shadow: none;
+  text-align: left;
+}
+
+.landing-footer .footer-content .links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.landing-footer .footer-content p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.landing-footer .footer-content a {
+  color: #b8f2d1;
+  font-size: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.landing-footer .footer-content a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.landing-footer .footer-links {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.landing-footer .footerend {
+  display: flex;
+  grid-column: 1 / -1;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.landing-footer .modal-overlay {
+  z-index: 4000;
+  padding: 1rem;
+  background: rgba(0, 26, 51, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.landing-footer .modal-content {
+  width: min(92vw, 500px);
+  padding: 2rem;
+  border: 1px solid rgba(0, 26, 51, 0.08);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(0, 26, 51, 0.25);
+  color: var(--text-color);
+  text-align: center;
+}
+
+.landing-footer .modal-content h2 {
+  margin: 0 0 0.75rem;
+  padding: 0;
+  color: #218653;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.landing-footer .modal-content p {
+  margin: 0 0 0.5rem;
+  color: #526171;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.landing-footer .modal-content button {
+  min-height: 42px;
+  margin-top: 1rem;
+  padding: 0.65rem 1.25rem;
+  border: 0;
+  border-radius: 8px;
+  background: var(--main-color);
+  color: #fff;
+  font: 600 0.9rem 'Poppins', 'Montserrat', sans-serif;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .landing-footer {
+    padding-top: 2.5rem;
+  }
+
+  .landing-footer .footer-sectionone {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    width: 90%;
+  }
+
+  .landing-footer .section1 {
+    gap: 0.8rem;
+  }
+
+  .landing-footer .section2 {
+    justify-content: stretch;
+  }
+
+  .landing-footer .section2 .send-message {
+    padding: 1.25rem;
+  }
+
+  .landing-footer .subcribe {
+    width: 90%;
+    margin-top: 2rem;
+    padding: 0.8rem;
+  }
+
+  .landing-footer .footer-content {
+    grid-template-columns: 1fr;
+    padding: 1.25rem 5%;
+  }
+
+  .landing-footer .footer-links {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-footer .subcribe {
+    flex-direction: column;
+  }
+
+  .landing-footer .subcribe button {
+    width: 100%;
+  }
+
+  .landing-footer .footerend {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

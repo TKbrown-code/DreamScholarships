@@ -1,14 +1,13 @@
-import Header from "../components/Header";
-import Welcome from "../components/welcome"
-import About_china from "../components/about_china"
-import Scholarships from "../components/scholarships"
-import About from "../components/About"
-import Slide from "../components/slides"
-import Testimonial from "../components/testimonial";
-import Frequentlyaskquestions from "../components/frq"
-import Footer from "../components/footer"
-import Nav from "../components/nav"
-import Mobile from "../components/mobileNav"
+import Header from "../components/landing/Header";
+import About_china from "../components/landing/about_china"
+import Scholarships from "../components/landing/scholarships"
+import About from "../components/landing/About"
+import Slide from "../components/landing/slides"
+import Testimonial from "../components/landing/testimonial";
+import Frequentlyaskquestions from "../components/landing/FRQ.jsx"
+import Footer from "../components/landing/footer"
+import Nav from "../components/landing/nav"
+import Mobile from "../components/landing/mobileNav"
 import { FaWhatsapp, } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
@@ -45,11 +44,10 @@ const Home = () => {
             <Mobile />
             <Nav />
             <Header />
-            <Welcome />
-            <About_china />
             <Scholarships />
             <Slide />
             <About />
+            <About_china />
             <Testimonial />
             <Frequentlyaskquestions />
             <Footer />

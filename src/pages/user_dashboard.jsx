@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../lib/Supabase';
 import { useAuth } from '../context/AuthContext';
-import DashboardForms from "../components/userDashboardforms";
+import DashboardForms from "../components/dashboard/userDashboardforms";
 import Avater from "../hooks/profilepic"
 import "../style/dashboard.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserAlt,  faArrowCircleLeft, faUserGraduate, faGear, faComment, faBellConcierge, faQuoteLeft, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import Nav from "../components/dashboard-nav";
-import Profils from "../components/profile";
-import Chats from "../components/chats";
-import Notifications from "../components/Notifications";
-import Status from "../components/status";
-import Testimonial from "../components/dashboardTestimonial";
-import Settings from "../components/settings";
-import DashboardOverview from '../components/Dashoard-overview';
-import Footer from '../components/dashboardfooter';
+import Nav from "../components/dashboard/dashboard-nav";
+import Profils from "../components/dashboard/profile";
+import Chats from "../components/dashboard/chats";
+import Notifications from "../components/dashboard/Notifications";
+import Status from "../components/dashboard/status";
+import Testimonial from "../components/dashboard/dashboardTestimonial";
+import Settings from "../components/dashboard/settings";
+import DashboardOverview from '../components/dashboard/Dashoard-overview';
+import Footer from '../components/dashboard/dashboardfooter';
 import Loading from "../hooks/loading";
 
 const UserDashboard = () => {

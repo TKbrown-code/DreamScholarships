@@ -1,0 +1,165 @@
+.china {
+  margin: 0;
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f4f9fd 0%, #fff 100%);
+  color: var(--text-color);
+}
+
+.china .about-china-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(88%, 760px);
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.china .about-china-header h1 {
+  margin: 0 0 0.65rem;
+  color: var(--text-color);
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+
+.china .about-china-header p {
+  margin: 0 0 1.25rem;
+  color: #526171;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.china .about-china-header .line {
+  width: 68px;
+  height: 4px;
+  margin: 0 auto;
+  border-radius: 999px;
+  background: var(--main-color);
+}
+
+.china .about-china-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: stretch;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  width: min(88%, 1200px);
+  margin: 0 auto;
+}
+
+.china .about-china-image {
+  width: 100%;
+  height: clamp(320px, 38vw, 470px);
+  margin: 0;
+  overflow: hidden;
+  border: 6px solid #fff;
+  border-radius: 22px;
+  background: #e8f7ef;
+  box-shadow: 0 18px 42px rgba(0, 26, 51, 0.14);
+}
+
+.china .about-china-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.china .about-china-image:hover img {
+  transform: scale(1.035);
+}
+
+.china .about-china {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  overflow: visible;
+  border: 1px solid rgba(0, 26, 51, 0.08);
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 12px 34px rgba(0, 26, 51, 0.08);
+}
+
+.china .about-china h2 {
+  margin: 0 0 1.1rem;
+  color: #218653;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.china .about-china p {
+  margin: 0 0 1rem;
+  color: #526171;
+  font-size: 0.98rem;
+  line-height: 1.8;
+}
+
+.china .about-china p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .china .about-china-body {
+    grid-template-columns: 1fr;
+    width: min(90%, 700px);
+  }
+
+  .china .about-china-image {
+    height: clamp(280px, 55vw, 400px);
+  }
+
+  .china .about-china {
+    padding: 1.75rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .china {
+    padding: 3rem 0;
+  }
+
+  .china .about-china-header {
+    width: 90%;
+    margin-bottom: 1.75rem;
+  }
+
+  .china .about-china-header h1 {
+    font-size: 2rem;
+  }
+
+  .china .about-china-header p {
+    font-size: 0.92rem;
+  }
+
+  .china .about-china-body {
+    gap: 1rem;
+  }
+
+  .china .about-china-image {
+    height: 240px;
+    border-width: 4px;
+    border-radius: 16px;
+  }
+
+  .china .about-china {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .china .about-china h2 {
+    font-size: 1.4rem;
+  }
+
+  .china .about-china p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+}

@@ -1,0 +1,269 @@
+.hero-header {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  height: auto;
+  min-height: calc(100vh - 80px);
+  padding: 2.5rem 0;
+  overflow: hidden;
+  background-color: #f4f9fd;
+  background-image: url('../assets/Global Graduate Hero with Green Accents (1).png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero-header .overlay {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  min-height: inherit;
+  background: linear-gradient(
+    90deg,
+    rgba(244, 249, 253, 0.98) 0%,
+    rgba(244, 249, 253, 0.96) 39%,
+    rgba(244, 249, 253, 0.82) 48%,
+    rgba(244, 249, 253, 0) 50%
+  );
+}
+
+.hero-header .content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: min(86%, 1200px);
+  height: auto;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.hero-header .header-content {
+  width: min(48%, 590px);
+}
+
+.hero-header .header-content h1 {
+  margin: 1.5rem 0 1rem;
+  color: var(--main-color);
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-size: clamp(2.8rem, 4.5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.hero-header .header-cto {
+  color: var(--text-color);
+}
+
+.hero-header .header-content p {
+  max-width: 54ch;
+  margin-bottom: 1.7rem;
+  color: #526171;
+  font-size: clamp(1rem, 1.25vw, 1.1rem);
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.hero-header .header-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0;
+}
+
+.hero-header .explore-btn,
+.hero-header .advisor-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 3rem;
+  width: auto;
+  padding: 0.75rem 1.3rem;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.hero-header .explore-btn {
+  background: var(--main-color);
+  color: white;
+  box-shadow: 0 6px 16px rgba(42, 157, 102, 0.18);
+}
+
+.hero-header .advisor-btn {
+  border-color: #46556a;
+  background: rgba(255, 255, 255, 0.52);
+  color: var(--text-color);
+}
+
+.hero-header .advisor-btn svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--text-color);
+}
+
+.hero-header .explore-btn:hover,
+.hero-header .advisor-btn:hover {
+  transform: translateY(-2px);
+}
+
+.hero-header .explore-btn:hover {
+  background: #2a9d66;
+  box-shadow: 0 9px 20px rgba(42, 157, 102, 0.25);
+}
+
+.hero-header .advisor-btn:hover {
+  background: white;
+}
+
+.hero-header .explore-btn:focus-visible,
+.hero-header .advisor-btn:focus-visible {
+  outline: 3px solid rgba(62, 180, 121, 0.4);
+  outline-offset: 3px;
+}
+
+.hero-header .hero-welcome {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 2.4rem;
+}
+
+.hero-header .hero-welcards {
+  min-height: 82px;
+  padding: 0.2rem 0.8rem;
+  border: 0;
+  border-right: 1px solid rgba(20, 40, 60, 0.12);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.hero-header .hero-welcards:first-child {
+  padding-left: 0;
+}
+
+.hero-header .hero-welcards:last-child {
+  border-right: 0;
+}
+
+.hero-header .hero-welcards h2 {
+  margin-bottom: 0.45rem;
+  color: var(--text-color);
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.hero-header .hero-welcards p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .hero-header {
+    min-height: calc(100vh - 64px);
+    padding: 2rem 0;
+    background-position: 58% center;
+  }
+
+  .hero-header .overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(244, 249, 253, 0.98) 0%,
+      rgba(244, 249, 253, 0.93) 55%,
+      rgba(244, 249, 253, 0.35) 100%
+    );
+  }
+
+  .hero-header .content {
+    width: min(90%, 700px);
+  }
+
+  .hero-header .header-content {
+    width: min(68%, 590px);
+  }
+
+  .hero-header .header-content h1 {
+    font-size: clamp(2.5rem, 6vw, 3.6rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-header {
+    min-height: auto;
+    padding: 2.5rem 0;
+    background-position: 65% center;
+  }
+
+  .hero-header .overlay {
+    background: rgba(244, 249, 253, 0.9);
+  }
+
+  .hero-header .content {
+    width: min(88%, 480px);
+  }
+
+  .hero-header .header-content {
+    width: 100%;
+  }
+
+  .hero-header .header-content h1 {
+    margin: 0 0 1rem;
+    font-size: clamp(2.35rem, 10vw, 3.2rem);
+  }
+
+  .hero-header .header-content p {
+    margin-bottom: 1.35rem;
+    font-size: 0.98rem;
+  }
+
+  .hero-header .header-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
+  }
+
+  .hero-header .explore-btn,
+  .hero-header .advisor-btn {
+    width: 100%;
+  }
+
+  .hero-header .hero-welcome {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 1.7rem;
+  }
+
+  .hero-header .hero-welcards,
+  .hero-header .hero-welcards:first-child {
+    min-height: 0;
+    padding: 0.75rem 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(20, 40, 60, 0.12);
+  }
+
+  .hero-header .hero-welcards:last-child {
+    border-bottom: 0;
+  }
+
+  .hero-header .hero-welcards h2 {
+    font-size: 0.9rem;
+  }
+
+  .hero-header .hero-welcards p {
+    font-size: 0.8rem;
+  }
+}
